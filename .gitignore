@@ -5,3 +5,8 @@ context/
 dist/
 .DS_Store
 .keyframes/
+__pycache__/
+whisper.cpp/
+# scratch reels (look tests), never shipped
+engine/full-visual/reels/_*/
+engine/full-visual/public/_*/
