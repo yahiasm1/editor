@@ -1,0 +1,6 @@
+.env*
+node_modules/
+workspace/
+context/
+dist/
+.DS_Store
