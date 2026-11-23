@@ -1,0 +1,92 @@
+# NBA floor. Script: script.txt (the approved transcript, hook 1, word for word). Facts: facts.md. Voice: reel.json (Snap v3, one take, uniform atempo 1.07, pauses capped 0.2 s, paragraph breaths 0.30 s).
+== hook | ground: dark
+The NBA *three-point* line
+isn't the *same* distance
+*everywhere.*
+In the *corners,*
+it's almost *two* feet
+*closer.*
+== answer | ground: dark
+So *why* would the league
+*paint* it that way?
+It isn't a *mistake,*
+it's the *width*
+of the floor.
+== corner | ground: dark
+Picture the ball
+*swinging* to a shooter
+standing *alone*
+in the *corner,*
+his *heels* a step
+from the *sideline.*
+== width | ground: dark
+An NBA court
+is *50* feet wide,
+and the *basket* sits
+right in the *middle,*
+*25* feet
+from each *sideline.*
+== arc | ground: dark
+The *rulebook* draws the arc
+*23* feet 9 inches
+from the *basket,*
+but it also keeps the line
+*3* feet inside the sideline,
+so a shooter's *feet*
+still *fit.*
+That leaves *22* feet
+in the *corner.*
+== percent | ground: dark
+*21* inches
+sounds like *nothing,*
+but the shot *feels* it.
+Last season NBA teams
+made *38.7%*
+of their *corner* threes,
+and only about *35%*
+of the threes
+above the *break.*
+== points | ground: dark
+Now turn that
+into *points.*
+A corner three
+is worth about *1.16*
+points per shot.
+A *long* two,
+from *16* feet out
+to the line,
+went in *40%*
+of the time,
+which is only *0.8.*
+== worth | ground: dark
+So *stepping* back
+behind that short
+corner *line*
+makes the shot worth
+about *45%* more.
+== history | ground: dark
+That's why the long two
+*disappeared.*
+In *2005* it was
+nearly a *quarter*
+of every shot
+in the *league.*
+Last season it was
+under 1 in *20.*
+== close | ground: dark
+So the line really
+isn't the *same* distance
+everywhere,
+and the *smartest* teams
+spend every *possession*
+trying to reach
+the *shortest* part of it.
+== cta | ground: dark
+Next game, *watch*
+who's waiting
+in the 🏀 *corner.*
+*Follow* for the next number
+the floor *hides,*
+and *send* this
+to the friend
+who still loves a *long* two.
