@@ -1,0 +1,86 @@
+# Wemby 50. Script: script.txt (the approved transcript, word for word). Facts: facts.md. Voice: reel.json (Snap v3, one take, uniform atempo 1.08, pauses capped 0.2 s, paragraph breaths 0.30 s).
+== hook | ground: dark
+*Wembanyama's*
+*50* points
+aren't the *scary* number.
+The scary number
+is *29.*
+== answer | ground: dark
+That's how many
+*shots* he took
+against the *Pelicans*
+on *Saturday,*
+and it's what made
+the 50 so *rare.*
+== boxscore | ground: dark
+Imagine you open
+the box *score.*
+You see *50*
+next to his *name*
+and you think he just
+*shot* all night.
+But points only *tell* you
+what he *got,*
+not what it *cost.*
+== cost | ground: dark
+So analysts
+*count* the cost.
+Every *shot* uses up
+*one* of his team's chances.
+== freethrow | ground: dark
+A trip to the
+free throw *line*
+usually means *two* shots
+for *one* chance,
+so each free throw
+counts as a little
+under *half* a shot,
+*0.44.*
+== attempts | ground: dark
+Add it *up*
+and Wemby used
+about *31.5* shots.
+*50* points on those
+is *1.58* points
+every time he *shot.*
+== trueshooting | ground: dark
+True shooting
+*halves* that,
+so a made *two*
+on every shot
+would be a *100%.*
+His was *79.*
+The league *average*
+this season
+is *57.5.*
+== average | ground: dark
+Now give an
+*average* scorer
+the exact same
+*31.5* shots.
+They walk off
+with about *36* points.
+== extra | ground: dark
+Wemby got *50.*
+Those *14* extra points
+are the real *story.*
+== where | ground: dark
+And look where
+they *came* from.
+*10* of his 12 shots
+at the *rim* went in,
+and *5* of his 11 threes,
+in under *32* minutes,
+in a game the Spurs
+*won* by 23.
+== close | ground: dark
+So *50*
+is the headline.
+*29* shots
+is why it was *scary.*
+== cta | ground: dark
+*Follow* for the next number
+the box score *hides,*
+and *send* this
+to the friend
+who only checks *points.*

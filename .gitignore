@@ -11,3 +11,4 @@ whisper.cpp/
 engine/full-visual/reels/_*/
 engine/full-visual/public/_*/
 models/*.bin
+engine/full-visual/reels/*/stills/
