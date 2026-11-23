@@ -4,3 +4,4 @@ workspace/
 context/
 dist/
 .DS_Store
+.keyframes/
