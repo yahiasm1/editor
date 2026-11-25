@@ -89,6 +89,11 @@ const GrannyShotShaqLegs: React.FC<{ alpha: number }> = ({ alpha }) => {
     const X = (x: number) => (m === 1 ? x : 650 - x);
     return (
       <g key={m}>
+        {/* the leg's skin, a dark wash under the ink */}
+        <path
+          d={`M${X(214)},1166 C${X(220)},1190 ${X(232)},1205 ${X(230)},1222 C${X(226)},1250 ${X(214)},1280 ${X(220)},1320 C${X(224)},1350 ${X(234)},1368 ${X(236)},1384 L${X(280)},1384 C${X(282)},1368 ${X(292)},1350 ${X(296)},1322 C${X(302)},1284 ${X(296)},1254 ${X(292)},1224 C${X(290)},1206 ${X(298)},1195 ${X(304)},1174 Z`}
+          fill="url(#gs-shaq-skin)"
+        />
         {/* the leg: outer and inner contour, knee, calf */}
         <path
           d={`M${X(214)},${1166} C${X(220)},${1190} ${X(232)},${1205} ${X(230)},${1222} C${X(226)},${1250} ${X(214)},${1280} ${X(220)},${1320} C${X(224)},${1350} ${X(234)},${1368} ${X(236)},${1384}`}
@@ -123,6 +128,19 @@ const GrannyShotShaqLegs: React.FC<{ alpha: number }> = ({ alpha }) => {
   };
   return (
     <g opacity={alpha}>
+      <defs>
+        <linearGradient id="gs-shaq-shorts" x1="0" y1="1063" x2="0" y2="1170" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#4B32A6" stopOpacity={0} />
+          <stop offset="0.3" stopColor="#4B32A6" stopOpacity={0.85} />
+          <stop offset="1" stopColor="#36237E" stopOpacity={0.9} />
+        </linearGradient>
+        <linearGradient id="gs-shaq-skin" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#1F1612" />
+          <stop offset="0.45" stopColor="#4A3429" />
+          <stop offset="1" stopColor="#241913" />
+        </linearGradient>
+      </defs>
+      <path d="M211,1063 L207,1166 Q260,1176 318,1174 L326,1122 L334,1174 Q392,1176 442,1164 L438,1063 Z" fill="url(#gs-shaq-shorts)" />
       {/* the shorts run on from the photo to the hem */}
       <path d={`M211,1078 L207,1166 Q260,1176 318,1174 L326,1122 L334,1174 Q392,1176 442,1164 L438,1078`} fill="none" stroke={ink} strokeWidth={2.6} strokeLinejoin="round" strokeLinecap="round" opacity={0.95} />
       <path d={`M232,1100 q10,30 4,60 M418,1100 q-10,30 -4,60`} fill="none" stroke={ink} strokeWidth={1.4} opacity={0.5} />
@@ -212,7 +230,7 @@ export const GrannyShot: React.FC = () => {
   const press = Math.min(1, prog(f, t.coach, 6, ease.out) + 0.6 * push) * (1 - 0.5 * pat);
   const tip = { x: sx(S_ELBOW_OUT.x) + 6 + 20 * push, y: sy(S_ELBOW_OUT.y) + 10 - 4 * push };
   const handBack = (1 - handIn) * 520 + handOut * 600 - press * 8 + pat * 14; // stage px along the fingers
-  const handScale = 0.215 * (sb.s / SA.s);
+  const handScale = 0.3 * (sb.s / SA.s);
   const handRot = 36 + 6 * push - 3 * pat;
 
   // ---- the shot line: elbow, ball, ring. Kinked while the elbow flares, straight once it is tucked

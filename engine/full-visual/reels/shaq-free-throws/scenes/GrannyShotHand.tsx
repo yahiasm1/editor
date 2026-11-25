@@ -6,7 +6,7 @@ import React from "react";
 import { staticFile } from "remotion";
 
 export const GRANNYSHOT_HAND_SRC = staticFile("shaq-free-throws/grannyshot-hand.png");
-export const GRANNYSHOT_HAND_CONTACT = { x: 380, y: 300 };
+export const GRANNYSHOT_HAND_CONTACT = { x: 390, y: 400 };
 
 export const GrannyShotHand: React.FC<{ press: number }> = ({ press }) => {
   const c = GRANNYSHOT_HAND_CONTACT;
