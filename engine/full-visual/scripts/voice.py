@@ -41,7 +41,8 @@ def call(path, body=None):
 def speak(text, v):
     body = {"text": text, "model_id": v["model"], "voice_settings": {
         "speed": v["speed"], "stability": v["stability"], "similarity_boost": v["similarity"], "style": v["style"], "use_speaker_boost": True}}
-    out = call(f"/text-to-speech/{v['id']}/with-timestamps?output_format=mp3_44100_192", body)
+    # "format" in reel.json "voice": plans below ElevenLabs Creator refuse 192 kbps and take mp3_44100_128
+    out = call(f"/text-to-speech/{v['id']}/with-timestamps?output_format={v.get('format', 'mp3_44100_192')}", body)
     return base64.b64decode(out["audio_base64"]), out["alignment"]
 
 

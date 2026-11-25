@@ -1,0 +1,19 @@
+{{Flickr
+|description=This is what Phil Jackson looks like when he is mad. After watching him struggle to walk out onto the court it dawned on me that I could soon be seeing "this is what Phil Jackson looks like when he has a heart attack". Thankfully I was spared. 
+|flickr_url=https://www.flickr.com/photos/compujeramey/71083432/
+|title=Phil Jackson
+|taken=2005-12-06
+|photographer_url=https://www.flickr.com/photos/compujeramey/
+|photographer=compujeramey
+|photographer_location= (optional)
+|reviewer=Kerosene
+|permission= (optional, returns "see below" if nothing is filled in)
+}}
+
+{{cc-by-2.0}}
+{{User:FlickreviewR/reviewed-pass|compujeramey|https://www.flickr.com/photos/37171504@N00/71083432|16:50, 7 April 2007 (UTC)|cc-by-2.0}}
+
+[[Category:Phil Jackson]]
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:Milwaukee Bucks]]
+[[Category:Taken with Canon Digital IXUS 30]]

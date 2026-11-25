@@ -1,0 +1,16 @@
+== {{int:filedesc}} ==
+{{Information
+|Description=Bosh and his Raptor comrades.
+|Source=[https://www.flickr.com/photos/37171504@N00/93455101/ Bucks vs Raptors - January 27th, 2006]
+|Date=2006-01-27 21:27
+|Author=[https://www.flickr.com/people/37171504@N00 Jeramey Jannene] from Milwaukee, WI, United States of America
+|Permission=
+|other_versions=
+}}
+== {{int:license-header}} ==
+{{cc-by-2.0}}
+{{flickrreview|Leoboudv|2013-06-01}}
+[[Category:Morris Peterson]]
+[[Category:2005–06 Toronto Raptors season]]
+[[Category:Files uploaded by User:Adeletron 3030]]
+[[Category:Taken with Canon Digital IXUS 30]]

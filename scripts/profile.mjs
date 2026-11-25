@@ -87,7 +87,11 @@ async function connect() {
 let session;
 const notConnected = (e) => /no active connection/i.test(JSON.stringify(e?.error ?? e?.message ?? e ?? ""));
 const exec = async (tool, args) => { try { return await session.execute(tool, args); } catch (e) { return { error: e?.error?.error ?? e?.error ?? { message: String(e?.message ?? e) } }; } };
-try { session = await openSession(); } catch (e) { if (!notConnected(e)) fail(`Composio session failed: ${String(e?.message ?? e).slice(0, 200)}`); }
+// With several active connections the tool router cannot choose one, so name an active one up front;
+// the identity check below still confirms it is the buyer's own account.
+let firstActive;
+try { firstActive = ((await api(`/connected_accounts?user_ids=${encodeURIComponent(userId)}&toolkit_slugs=instagram`)).items ?? []).find((a) => a.status === "ACTIVE")?.id; } catch {}
+try { session = await openSession(firstActive); } catch (e) { if (!notConnected(e)) fail(`Composio session failed: ${String(e?.message ?? e).slice(0, 200)}`); }
 let me = session ? await exec("INSTAGRAM_GET_USER_INFO", {}) : { error: { message: "No active connection" } };
 if (me.error && notConnected(me)) {
   await connect();
@@ -116,7 +120,7 @@ try {
 async function field(mediaId, fields, connection = connectedAccount) {
   if (!connection) return {};
   try {
-    const r = await fetch(`${API}/tools/execute/proxy`, { method: "POST", signal:AbortSignal.timeout(8000), headers: { "x-api-key": apiKey, "content-type": "application/json" }, body: JSON.stringify({ endpoint: `/${encodeURIComponent(mediaId)}?fields=${fields}`, method: "GET", connected_account_id: connection }) });
+    const r = await fetch(`${API}/tools/execute/proxy`, { method: "POST", signal:AbortSignal.timeout(8000), headers: { "x-api-key": apiKey, "content-type": "application/json" }, body: JSON.stringify({ endpoint: `/${encodeURIComponent(mediaId)}?fields=${fields}`, method: "GET", connected_account_id: connection, user_id: userId }) });
     const j = await r.json(); return j.error || j.data?.error ? {} : j.data ?? {};
   } catch { return {}; }
 }

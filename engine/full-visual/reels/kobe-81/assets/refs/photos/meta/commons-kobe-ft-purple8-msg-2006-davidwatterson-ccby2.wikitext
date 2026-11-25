@@ -1,0 +1,18 @@
+== {{int:filedesc}} ==
+{{Information
+|Description= Kobe Bryant shoots freethrow vs New York Knicks in 2006.
+|Source=[https://www.flickr.com/photos/7763540@N05/466928475/ NYC06_DW-56]
+* Uploaded by [[User:JoeJohnson2|JoeJohnson2]]
+|Date=2006-02-19 14:52
+|Author=[https://www.flickr.com/people/7763540@N05 David Watterson] from Prague, Czech Republic
+|Permission=
+|other_versions=
+}}
+{{extractedFrom|Image:Kobe Bryant Knicks06 Original.jpg}}
+{{RetouchedPicture|Crop, Resize, Border|editor=JoeJohnson2|orig=Kobe Bryant Knicks06 Original.jpg}}
+== {{int:license-header}} ==
+{{cc-by-2.0}}
+{{flickrreview|File Upload Bot (Magnus Manske)|August 1, 2009}}
+
+[[Category:Kobe Bryant in 2006]]
+[[Category:2005–06 Los Angeles Lakers season]]

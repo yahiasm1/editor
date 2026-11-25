@@ -1,0 +1,17 @@
+== {{int:filedesc}} ==
+{{Information
+|description={{en|1=This is a Pennsylvania state sign for wilt chamberlains 100 point game and explaining the game.}}
+|date={{Taken on|2024-02-24 12:25:58|location=United States}}
+|source={{own}}
+|author=[[User:Crazycat8590|Crazycat8590]]
+|permission=
+|other versions=
+}}
+{{Location|40.288639|-76.656661|heading:42}}
+
+== {{int:license-header}} ==
+{{self|cc-zero}}
+
+[[Category:Hersheypark Arena]]
+[[Category:Wilt Chamberlain]]
+[[Category:1962-03-02]]

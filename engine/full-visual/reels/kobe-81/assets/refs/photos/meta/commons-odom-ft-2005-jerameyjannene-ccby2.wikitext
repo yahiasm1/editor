@@ -1,0 +1,16 @@
+== {{int:filedesc}} ==
+{{Information
+| Description = Lamar Odom shooting free throws
+| Source      = [https://www.flickr.com/photos/compujeramey/71084152/ Odom Shooting]
+| Date        = 2005-12-06 21:47
+| Author      = [https://www.flickr.com/people/37171504@N00 Jeramey Jannene] from Milwaukee, WI, United States of America
+| Permission  = 
+| other_versions=
+}}
+
+=={{int:license-header}}==
+{{cc-by-2.0}}
+{{FlickreviewR|status=passed|author=compujeramey|sourceurl=https://flickr.com/photos/37171504@N00/71084152|archive=https://web.archive.org/web/20190215135553/https://www.flickr.com/photos/37171504@N00/71084152/|reviewdate=2019-06-08 17:42:30|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:2005–06 Milwaukee Bucks season]]
+[[Category:Free throw]]

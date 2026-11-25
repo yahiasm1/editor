@@ -1,0 +1,17 @@
+== {{int:filedesc}} ==
+{{Information
+| Description = Kobe Bryant and his follow through on his free throw.
+| Source      = [https://www.flickr.com/photos/compujeramey/71084472/ Kobe Bryant Shooting Free Throws]
+| Date        = 2005-12-06 21:53
+| Author      = [https://www.flickr.com/people/37171504@N00 Jeramey Jannene] from Milwaukee, WI, United States of America
+| Permission  = 
+| other_versions=
+}}
+
+=={{int:license-header}}==
+{{cc-by-2.0}}
+{{Flickrreview|Leoboudv|2019-09-24}}
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:2005–06 Milwaukee Bucks season]]
+[[Category:Kobe Bryant in 2005]]
+[[Category:Free throw]]

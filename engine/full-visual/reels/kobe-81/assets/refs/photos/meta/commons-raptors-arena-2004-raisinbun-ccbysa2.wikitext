@@ -1,0 +1,27 @@
+=={{int:filedesc}}==
+{{Information
+|description={{en|1=jump ball at a preseason portland trail blazers at toronto raptors game}}
+|date={{Taken on|2004-10-22|location=Canada}}
+|source=https://www.flickr.com/photos/bunchan/256220360
+|author=[https://www.flickr.com/photos/bunchan/ Raisin Bun]
+|permission=
+|other_versions={{DerivativeVersions|Derek Anderson 2004.jpg}}
+
+|other_fields=
+}}
+
+=={{int:license-header}}==
+{{User:FlickreviewR/reviewed-pass|raisin bun|https://www.flickr.com/photos/84449468@N00/256220360|08:15, 19 June 2011 (UTC)|cc-by-sa-2.0|}}{{cc-by-sa-2.0}}
+
+[[Category:2004–05 Toronto Raptors season]]
+[[Category:Interior of Scotiabank Arena]]
+[[Category:Chris Bosh]]
+[[Category:Jalen Rose]]
+[[Category:October 2004 in Toronto]]
+[[Category:Rafer Alston]]
+[[Category:Theo Ratliff]]
+[[Category:Vince Carter]]
+[[Category:2004–05 Portland Trail Blazers season]]
+[[Category:Derek Anderson (basketball)]]
+[[Category:Basketball matches in Scotiabank Arena]]
+[[Category:Taken with Fujifilm FinePix F410]]

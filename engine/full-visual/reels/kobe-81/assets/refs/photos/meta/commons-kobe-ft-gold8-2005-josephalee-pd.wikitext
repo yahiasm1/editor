@@ -1,0 +1,29 @@
+=={{int:filedesc}}==
+{{Information
+|description={{en|1=Kobe Bryant, Lakers shooting guard, stands ready to shoot a free throw during Tuesday night’s pre-season game against the Golden State Warriors. Bryant was essential in bringing together a large point gap late in the second quarter, after the Warriors took the early lead.}}
+|date=2005-10-11 20:21:52
+|source=Derivative of [[:File:Kobe Bryant 7144.jpg]]
+|author=Sgt. Joseph A. Lee
+|permission=
+|other versions={{Image extracted|1=Kobe Bryant 7144 adjusted (cropped).jpg}}<gallery>
+File:Kobe Bryant 7144.jpg|Original version
+File:Kobe Bryant 8.jpg|Crop with different levels and colors
+File:KBryant8.jpg|Person in background airbrushed out
+File:Kobe Bryant 248.jpg|#24 Jersey modifcation
+File:Kobe B Bryant.jpg|Cropped
+</gallery>
+}}
+{{RetouchedPicture|Adjusted curves|orig=Kobe_Bryant_7144.jpg}}
+{{Assessments|enwiki=1|enwiki-nom=Kobe Bryant}}
+
+=={{int:license-header}}==
+
+{{PD-USGov-Military-Marines}}
+
+[[Category:Kobe Bryant in 2005]]
+[[Category:Sportspeople with tattoos]]
+[[Category:Number 8 on basketball jerseys]]
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:2005 in California]]
+[[Category:Free throw]]
+[[Category:October 2005 in the United States]]

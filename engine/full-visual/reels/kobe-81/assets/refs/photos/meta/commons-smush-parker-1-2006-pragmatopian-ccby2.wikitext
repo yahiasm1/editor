@@ -1,0 +1,27 @@
+{{Information
+|Description={{en|1=[[w:Smush Parker|Smush Parker]] with the Lakers}} |date=2006-01-31
+|Source=*[[:File:Kobe_free_throw_2006.jpg|Kobe_free_throw_2006.jpg]]
+|Date=2011-07-03 06:04 (UTC)
+|Author=*[[:File:Kobe_free_throw_2006.jpg|Kobe_free_throw_2006.jpg]]: [https://www.flickr.com/photos/pragmatopian/ pragmatopian]
+*derivative work: [[User:Lpdrew|Lpdrew]] ([[User talk:Lpdrew|<span class="signature-talk">talk</span>]])
+|Permission=
+|other_versions=
+}}
+
+{{RetouchedPicture|cropped|editor=|orig=Kobe_free_throw_2006.jpg}}
+
+{{self|Cc-by-2.0}}
+
+== {{Original upload log}} ==
+This image is a derivative work of the following images:
+
+*[[:File:Kobe_free_throw_2006.jpg]] licensed with Cc-by-2.0
+**2011-07-03T06:03:14Z [[User:Lpdrew|Lpdrew]] 2048x1361 (328387 Bytes) ''<nowiki></nowiki>''
+
+{{Uploaded with derivativeFX}}
+
+[[Category:2006 in New York City]]
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:January 2006 in the United States]]
+[[Category:Smush Parker]]
+[[Category:Purple sports uniforms]]
