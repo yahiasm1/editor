@@ -2,7 +2,7 @@
 // redrawn), and in its reflector a press bulb as in the Sylvania Press 25 photo: clear glass packed with a tangle of
 // shredded foil wire, on a brass base. On "snapped" it fires (the reel's amber, a witness) and goes milky, spent.
 import React from "react";
-import { PD_AMBER, PD_DIM, PD_HAIR, pdClamp, pdRnd } from "./PhotoDevelopingKit";
+import { PD_AMBER, PD_CARD, PD_HAIR, pdClamp, pdRnd } from "./PhotoDevelopingKit";
 
 export const PD_CAM = { w: 641, h: 855, bulb: [152.2, 157.8] as [number, number], refl: 148 };
 
@@ -60,12 +60,12 @@ export const PhotoDevelopingCamera: React.FC<{ V: CamView; o: number; spent: num
         </g>
       </g>
       {/* Paul Vathis's label, under the camera, a hairline and a line of grey */}
-      <g opacity={label} transform={`translate(${V.x + PD_CAM.w * k + 16} ${V.y + PD_CAM.h * k * 0.5})`}>
-        <line x1={-40} y1={-16} x2={300} y2={-16} stroke={PD_HAIR} strokeWidth={2} />
-        <text x={0} y={22} fontFamily={font} fontSize={34} fill={PD_DIM} style={{ textShadow: "0 2px 10px #0D1117" }}>
+      <g opacity={label} transform={`translate(${V.x + 265} ${V.y + 64})`}>
+        <rect x={-14} y={-16} width={334} height={98} rx={10} fill={PD_CARD} stroke={PD_HAIR} strokeWidth={2} />
+        <text x={2} y={20} fontFamily={font} fontSize={30} fill="#C9D1D9">
           Paul Vathis, AP,
         </text>
-        <text x={0} y={66} fontFamily={font} fontSize={34} fill={PD_DIM} style={{ textShadow: "0 2px 10px #0D1117" }}>
+        <text x={2} y={62} fontFamily={font} fontSize={30} fill="#C9D1D9">
           came to treat his son
         </text>
       </g>

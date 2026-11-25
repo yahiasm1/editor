@@ -28,11 +28,20 @@ export const ClownNoseFoam: React.FC<{ d: number; hole: number; sx?: number; sy?
           <stop offset="0.7" stopColor="#6A1013" />
           <stop offset="1" stopColor="#B0252A" />
         </radialGradient>
+        <radialGradient id="cn-turn" cx="0.62" cy="0.36" r="0.66">
+          <stop offset="0.55" stopColor="#3A0608" stopOpacity={0} />
+          <stop offset="0.9" stopColor="#3A0608" stopOpacity={0.35} />
+          <stop offset="1" stopColor="#2A0406" stopOpacity={0.6} />
+        </radialGradient>
+        <radialGradient id="cn-spec" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stopColor="#FFD6CF" stopOpacity={0.75} />
+          <stop offset="1" stopColor="#FFD6CF" stopOpacity={0} />
+        </radialGradient>
         <clipPath id="cn-ball">
           <ellipse cx={0} cy={2} rx={R + 2} ry={R - 3} />
         </clipPath>
         <filter id="cn-pores" x="-10%" y="-10%" width="120%" height="120%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="9" result="n" />
+          <feTurbulence type="fractalNoise" baseFrequency="0.42" numOctaves="2" seed="9" result="n" />
           <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 0.86  0 0 0 0 0.84  0 0 0 -14 6.6" result="lit" />
           <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.25  0 0 0 0 0.02  0 0 0 0 0.03  0 0 0 14 -7.6" result="dark" />
           <feMerge>
@@ -51,7 +60,7 @@ export const ClownNoseFoam: React.FC<{ d: number; hole: number; sx?: number; sy?
       <g clipPath="url(#cn-ball)">
         <rect x={-60} y={-60} width={120} height={120} fill="url(#cn-foam)" />
         {/* the pores, lit on the right, open and dark everywhere */}
-        <rect x={-60} y={-60} width={120} height={120} filter="url(#cn-pores)" mask="url(#cn-lit)" opacity={0.85} />
+        <rect x={-60} y={-60} width={120} height={120} filter="url(#cn-pores)" mask="url(#cn-lit)" opacity={0.5} />
         {/* the dusty scuff the photo shows near the top */}
         <ellipse cx={10} cy={-30} rx={13} ry={7} fill="#D9A3A0" opacity={0.35} transform="rotate(-18 10 -30)" />
         {/* the hole, foreshortened as it turns away */}
@@ -62,11 +71,13 @@ export const ClownNoseFoam: React.FC<{ d: number; hole: number; sx?: number; sy?
           </g>
         )}
         {/* the turn into shadow on the left, and a rim of reflected light at the bottom */}
-        <ellipse cx={-34} cy={14} rx={30} ry={46} fill="#4A0A0D" opacity={0.3} />
+        <rect x={-60} y={-60} width={120} height={120} fill="url(#cn-turn)" />
+        {/* the soft sheen the foam's skin takes from the sun on the right */}
+        <ellipse cx={20} cy={-22} rx={20} ry={13} fill="url(#cn-spec)" transform="rotate(-30 20 -22)" />
       </g>
       {/* the pinched cut crease on top */}
-      <path d="M-18 -44 C-8 -50 4 -49 14 -45" stroke="#7A1418" strokeWidth={2.2} fill="none" strokeLinecap="round" opacity={0.85} />
-      <path d="M-16 -42 C-7 -47 4 -46 12 -43" stroke="#FF8C84" strokeWidth={1} fill="none" strokeLinecap="round" opacity={0.6} />
+      <path d="M-18 -37 C-8 -43 4 -42 14 -38" stroke="#7A1418" strokeWidth={2.2} fill="none" strokeLinecap="round" opacity={0.85} />
+      <path d="M-16 -35 C-7 -40 4 -39 12 -36" stroke="#FF8C84" strokeWidth={1} fill="none" strokeLinecap="round" opacity={0.6} />
     </svg>
   );
 };

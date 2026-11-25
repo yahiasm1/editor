@@ -30,7 +30,7 @@ const NOSE = { x: 320 * NS, y: 333 * NS }; // his nose tip, in card pixels
 const NOSE_D = 105 * NS; // a 5 cm foam nose against his face, in card pixels
 
 // the stamp card: where HACK-A-SHAQ is stamped
-const SC = { x: 540, y: 900, w: 920, h: 360 };
+const SC = { x: 540, y: 1010, w: 920, h: 360 };
 
 function useClownNoseTimes() {
   const { cue, cueEnd, scene } = useScene();
@@ -61,11 +61,11 @@ type T = ReturnType<typeof useClownNoseTimes>;
 /** the stamp's die bottom (y), its tilt and its squash, frame by frame */
 function stampPose(t: T, f: number) {
   const contact = SC.y + CN_IMP.h / 2;
-  const hover = 690 + Math.sin((f - t.in) * 0.11) * 10;
+  const hover = 900 + Math.sin((f - t.in) * 0.11) * 8;
   const wind = prog(f, t.name - 26, 17, ease.out); // a short wind-up: it rises before it slams
   const slam = prog(f, t.name - 8, 8, ease.in);
   const lift = leave(f, t.hack - 11, 18);
-  let y = hover - 70 * wind;
+  let y = hover - 26 * wind;
   y = y + (contact - y) * slam;
   y = y - (contact + 420) * lift;
   const rot = (1 - slam) * Math.sin((f - t.in) * 0.07) * 2.2 + lift * -7;
@@ -82,7 +82,7 @@ const ClownNoseDigit: React.FC<{ f: number; land: number; to: number; size: numb
   const seq = Array.from({ length: 21 }, (_, i) => i % 10);
   const moving = f >= land - dur && f < land;
   return (
-    <div style={{ position: "relative", width: size * 0.62, height: h, overflow: "hidden" }}>
+    <div style={{ position: "relative", width: size * 0.62, height: h, overflow: "hidden", opacity: prog(f, land - dur - 3, 4, ease.linear) }}>
       <div style={{ position: "absolute", left: 0, top: -v * h, filter: moving ? `blur(${Math.min(3, (land - f) * 0.25).toFixed(2)}px)` : undefined }}>
         {seq.map((d, i) => (
           <div key={i} style={{ height: h, lineHeight: `${h}px`, textAlign: "center", width: size * 0.62 }}>
@@ -136,7 +136,7 @@ export const ClownNose: React.FC = () => {
   const nBob = laughU >= 0 ? -5 * Math.abs(Math.sin(laughU * 0.95)) * laugh : 0;
   const nBlur = blurHold(f, t.don - 8, 6, 10) * 10;
   // the push into his face, always about his nose: the nose point never moves inside the card
-  const z = 1 + 0.07 * prog(f, t.nelson, 50, ease.inOut) + 0.36 * prog(f, t.nelson2 - 4, 44, ease.inOut) + 0.00035 * Math.max(0, f - t.nelson);
+  const z = 1 + 0.07 * prog(f, t.nelson, 50, ease.inOut) + 0.58 * prog(f, t.nelson2 - 4, 44, ease.inOut) + 0.00035 * Math.max(0, f - t.nelson);
   // the date band and 1999
   const band = arrive(f, t.made - 2, 16);
 
@@ -151,7 +151,7 @@ export const ClownNose: React.FC = () => {
   const sRot = 6 + 5 * jab;
 
   // ---- 5. the nose ----------------------------------------------------------------------------------------
-  const hang = { x: NOSE.x + 6, y: NOSE.y - 222 };
+  const hang = { x: NOSE.x - 46, y: NOSE.y - 247 }; // over the crown of his head, clear of the caption once the card grows
   const appear = prog(f, t.clown - 2, 9, ease.back);
   const swingT = Math.max(0, f - t.clown);
   const theta = (9 * Math.sin(swingT * 0.085) * Math.exp(-swingT / 260) * Math.PI) / 180;
@@ -160,7 +160,7 @@ export const ClownNose: React.FC = () => {
   const swingFade = 1 - fallK;
   const hx = hang.x + L * Math.sin(theta) * swingFade;
   const hy = hang.y + L * (1 - Math.cos(theta)) * swingFade + Math.sin(swingT * 0.17) * 4 * swingFade;
-  const land = { x: NOSE.x - 1, y: NOSE.y - 5 };
+  const land = { x: NOSE.x + 9, y: NOSE.y - 9 };
   const u = f - t.clown2;
   const hop = u >= 0 ? -16 * Math.abs(Math.sin(u * 0.33)) * Math.exp(-u / 6) : 0;
   const sq = u >= 0 ? Math.exp(-u / 4) * Math.cos(u * 0.55) : 0;
@@ -215,7 +215,7 @@ export const ClownNose: React.FC = () => {
                 <div style={{ fontWeight: 500, fontSize: 24, color: GREY, marginTop: 2 }}>Dallas coach</div>
               </div>
             </div>
-            <div style={{ position: "absolute", right: 24, top: 20, fontFamily: FONT, fontWeight: 500, fontSize: 22, color: "#C9D1D9", opacity: 0.9, textShadow: CREDIT_SHADOW, whiteSpace: "nowrap" }}>
+            <div style={{ position: "absolute", right: 24, top: 20, fontFamily: FONT, fontWeight: 500, fontSize: 22, color: "#C9D1D9", textShadow: CREDIT_SHADOW, whiteSpace: "nowrap", background: "rgba(13,17,23,0.55)", padding: "2px 10px", borderRadius: 8 }}>
               Sean P. Anderson, CC BY 2.0
             </div>
           </div>
@@ -238,7 +238,7 @@ export const ClownNose: React.FC = () => {
             <Img src={SHAQ99} style={{ position: "absolute", left: 0, top: 0, width: SW, height: SH, transform: `scale(${(1.02 + 0.03 * prog(f, t.shaq, 90, ease.linear)).toFixed(4)})`, transformOrigin: "50% 40%" }} />
             <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 80, background: "linear-gradient(to bottom, rgba(13,17,23,0), rgba(13,17,23,0.85))" }} />
             <div style={{ position: "absolute", left: 16, bottom: 14, fontFamily: FONT, fontWeight: 700, fontSize: 30, color: "#FFFFFF" }}>Shaq</div>
-            <div style={{ position: "absolute", right: 12, top: 12, fontFamily: FONT, fontWeight: 500, fontSize: 18, color: "#C9D1D9", opacity: 0.9, textShadow: CREDIT_SHADOW, whiteSpace: "nowrap" }}>
+            <div style={{ position: "absolute", right: 12, top: 12, fontFamily: FONT, fontWeight: 500, fontSize: 18, color: "#C9D1D9", textShadow: CREDIT_SHADOW, whiteSpace: "nowrap", background: "rgba(13,17,23,0.55)", padding: "2px 8px", borderRadius: 7 }}>
               Steve Lipofsky, CC BY 3.0
             </div>
           </div>

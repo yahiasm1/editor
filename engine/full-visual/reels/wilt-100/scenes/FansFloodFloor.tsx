@@ -6,7 +6,7 @@
 // the totals light at last: 169, then 147, with the box score's source line.
 // Parts: Kit (times, world, seats, runners, camera, flaps), Arena (canvas: building, seats, people), Board (svg).
 import React from "react";
-import { blurIn, useScene } from "../../../src/engine";
+import { blurIn, ease, prog, useScene } from "../../../src/engine";
 import { FF_LABEL, ffBoardPt, ffCam, ffProject, ffSwing, useFloodT } from "./FansFloodFloorKit";
 import { FansFloodFloorArena } from "./FansFloodFloorArena";
 import { FansFloodFloorBoard, ffBoardGlow } from "./FansFloodFloorBoard";
@@ -21,8 +21,13 @@ export const FansFloodFloor: React.FC = () => {
   const glow = ffBoardGlow(f, T);
   // the source sits on the dark end wall right under the board it reads from
   const srcY = V.P(ffBoardPt(500, 760, 0)).y + 26;
+  // the way in: mounted on top of `freethrows`, the arena rises over it from below as one move in the silence
+  // (an opaque scene that simply appears at its mount frame is a one-frame cut)
+  const ip = prog(f, T.born, 13, ease.out), iq = prog(f - 1, T.born, 13, ease.out);
+  const inY = (1 - ip) * 1920;
+  const inSmear = Math.min(30, (ip - iq) * 1920 * 0.12);
   return (
-    <div style={{ ...FULL, overflow: "hidden", background: "#0D1117" }}>
+    <div style={{ ...FULL, overflow: "hidden", background: "#0D1117", transform: inY > 0.5 ? `translateY(${inY.toFixed(1)}px)` : undefined, filter: inSmear > 0.5 ? `blur(${(inSmear * 0.35).toFixed(1)}px)` : undefined }}>
       <FansFloodFloorArena f={f} T={T} V={V} boardGlow={glow} />
       <FansFloodFloorBoard f={f} T={T} V={V} swing={swing} font={theme.font.ui} />
       {/* the caption's band and the foot of the frame: the picture runs behind both, dimmed */}

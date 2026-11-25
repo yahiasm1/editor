@@ -15,7 +15,7 @@ import { LEAD } from "../../../src/engine/Stage";
 import {
   PC_BOARD_Y, PC_CAM_CARD, PC_CAM_HALF, PC_CAM_LINE, PC_CAM_POST, PC_CAM_PUSH, PC_FT_Y, PC_SHAQ_FT,
   PICTURE_COURT_END_CAM, PICTURE_COURT_LINE_SPOT, PICTURE_COURT_POST_SPOT,
-  pcBand, pcLerp as lerp, pcMixCam, pcProjector, pcRnd, type PcCam,
+  pcArc, pcBand, pcCut, pcPoly, pcLerp as lerp, pcMixCam, pcProjector, pcRnd, type PcCam,
 } from "./PictureCourtWorld";
 import { PictureCourtBasket, PictureCourtFloor } from "./PictureCourtFloor";
 import { PictureCourtArena } from "./PictureCourtArena";
@@ -64,10 +64,20 @@ function usePictureCourtTimes() {
 type T = ReturnType<typeof usePictureCourtTimes>;
 
 /** the one camera, through its moves */
+const PICTURE_COURT_CAM_CATCH: PcCam = { tx: 2.0, ty: 2.7, tz: 4.0, D: 11.5, yaw: 36 * Math.PI / 180, pitch: 15 * Math.PI / 180, F: 1150, cx: 540, cy: 1080 };
+const PICTURE_COURT_CAM_PIVOT: PcCam = { ...PC_CAM_POST, D: 12.4, tz: 4.8, cy: 1040 };
+
 function pictureCourtCam(t: T, f: number): PcCam {
   let c = pcMixCam(PC_CAM_CARD, PC_CAM_HALF, prog(f, t.in, t.it - t.in, ease.inOut));
-  c = pcMixCam(c, PC_CAM_PUSH, prog(f, t.it, t.under - t.it, ease.inOut));
-  c = pcMixCam(c, PC_CAM_POST, prog(f, t.under - 4, t.basket + 6 - (t.under - 4), ease.inOut));
+  // the push into the post lands on "catches", so he is big when the ball slaps in
+  c = pcMixCam(c, PC_CAM_PUSH, prog(f, t.it - 4, t.shaq - (t.it - 4), ease.in));
+  c = pcMixCam(c, PICTURE_COURT_CAM_CATCH, prog(f, t.shaq - 4, t.catches + 2 - (t.shaq - 4), ease.out));
+  // "under the basket": the camera eases back and up until the ring sits above him
+  c = pcMixCam(c, PC_CAM_POST, prog(f, t.under - 2, t.basket + 8 - (t.under - 2), ease.inOut));
+  // "and before he can even turn": a slow push on the pivot, a small hit when it freezes
+  c = pcMixCam(c, PICTURE_COURT_CAM_PIVOT, prog(f, t.and, t.turn - t.and, ease.inOut));
+  const hitF = f >= t.turn ? Math.exp(-(f - t.turn) / 6) : 0;
+  c = { ...c, F: c.F * (1 + 0.035 * hitF) };
   // a slow drift while he is in the post, so the held picture keeps living
   c = { ...c, yaw: c.yaw + 0.04 * prog(f, t.basket, t.now - t.basket, ease.linear) };
   // the punch-in on the grab: down to his forearm (the HANDS scale)
@@ -117,20 +127,35 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
   const shaqLeft = feet.x - FEET_X * k;
   const shaqTop = feet.y - h - bob * feet.s;
   // the pivot toward the rim: starts on "and", freezes half way on "turn"
-  const piv = prog(f, t.and, t.turn - t.and, ease.inOut) * (1 - prog(f, t.now, 24, ease.inOut));
-  const pivFreeze = f >= t.turn && f < t.now ? Math.sin((f - t.turn) * 0.9) * 0.004 * Math.exp(-(f - t.turn) / 10) : 0;
-  const sxScale = 1 - 0.11 * piv + pivFreeze;
-  const lean = -2.2 * piv;
+  const pivAt = (g: number) => prog(g, t.and, t.turn - t.and, ease.inOut) * (1 - prog(g, t.now, 24, ease.inOut));
+  const piv = pivAt(f);
+  const pivFreeze = f >= t.turn && f < t.now ? Math.sin((f - t.turn) * 0.9) * 0.01 * Math.exp(-(f - t.turn) / 10) : 0;
+  // his shoulders turn toward the rim (a squeeze across the back) and his weight leans onto the pivot foot
+  const pivTf = (q: number) => `scaleX(${(1 - 0.15 * q).toFixed(4)}) rotate(${(-6 * q).toFixed(2)}deg)`;
+  const sxScale = 1 - 0.15 * piv + pivFreeze;
+  const lean = -6 * piv;
+  // the motion smear while he turns: two ghosts a few frames behind
+  const pivMoving = f > t.and && f < t.turn + 2;
+  // the pivot arrow chalked on the boards around his feet, landing on "turn"
+  const arrowT = prog(f, t.and + 4, t.turn - t.and - 4, ease.inOut);
+  const arrowOp = prog(f, t.and, 8) * (1 - prog(f, t.somebody - 6, 10));
 
   // the pass from the right wing: in the air for 15 frames, slapping in on "catches"
   const handX = shaqLeft + HAND[0] * k, handY = shaqTop + HAND[1] * k;
   const passT = prog(f, t.catches - 15, 15, ease.linear);
-  const wing = P.p(-17, 12, 4.6);
+  // thrown from off the right edge (the wing he faces), a chest pass with a little loft
   const ballOn = f >= t.catches - 15;
-  const bx = passT < 1 ? lerp(wing.x, handX, passT) : handX;
-  const by = passT < 1 ? lerp(wing.y, handY, passT) - Math.sin(passT * Math.PI) * 60 : handY;
-  const bsz = passT < 1 ? lerp(wing.s * 0.78, BALL_PX * k, passT) : BALL_PX * k;
-  const slap = f >= t.catches ? Math.exp(-(f - t.catches) / 4) : 0;
+  const passAt = (q: number) => ({
+    x: lerp(1160, handX, q),
+    y: lerp(handY - 260, handY, q) - Math.sin(q * Math.PI) * 90,
+    s: lerp(BALL_PX * k * 1.25, BALL_PX * k, q),
+  });
+  const bp = passAt(passT);
+  const bx = passT < 1 ? bp.x : handX;
+  const by = passT < 1 ? bp.y : handY;
+  const bsz = passT < 1 ? bp.s : BALL_PX * k;
+  const passGhosts = passT > 0 && passT < 1 ? [0.06, 0.12, 0.18, 0.24].map((d) => ({ ...passAt(Math.max(0, passT - d)), d })) : [];
+  const slap = f >= t.catches ? Math.exp(-(f - t.catches) / 5) : 0;
   const ballSpin = (f - t.catches) * (passT < 1 ? 22 : 0) + (passT >= 1 ? -8 : 0);
   // the pass trail on the boards: the ball's shadow path, fading
   const trailOp = prog(f, t.catches - 15, 6) * (1 - prog(f, t.catches + 6, 30));
@@ -142,7 +167,7 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
   // the grab and the call
   const reach = arrive(f, t.somebody - 4, 14) * (1 - prog(f, t.now, 14, ease.in));
   const clamp = prog(f, t.grabs - 2, 5, ease.outHard);
-  const bloom = prog(f, t.grabs, 18, ease.out) * (1 - prog(f, t.now, 14));
+  const bloom = prog(f, t.grabs - 1, 7, ease.out) * (1 - prog(f, t.now, 14));
   const fistUp = arrive(f, t.him - 2, 10) * (1 - prog(f, t.now + 4, 12, ease.in));
 
   // the ring locks on "basket": the net kicks and the restricted arc glows
@@ -173,11 +198,11 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
   });
   const lift = 1 + 0.12 * spot;
 
-  const credit = shaqIn * 0.9;
+  const credit = shaqIn * 0.9 * (1 - fistUp);
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ transform: `translate(${jx.toFixed(1)}px, ${jy.toFixed(1)}px)` }}>
-        <PictureCourtArena P={P} f={f} rise={rise} dark={Math.max(dark, 0.3 * dim)} flash={prog(f, t.watching - 4, 6)} flashFrom={t.watching - 6} />
+        <PictureCourtArena P={P} f={f} rise={rise} dark={Math.max(dark, 0.3 * dim)} flash={0} flashFrom={0} />
         <PictureCourtFloor P={P} f={f} wood={wood} paint={paint} dim={dim} lineLit={lineLit} />
         {/* the pass trail and the ring locking in */}
         <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
@@ -205,6 +230,24 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
           </defs>
           <ellipse cx={feet.x - 10 * k} cy={feet.y - 6 * k} rx={300 * k} ry={Math.max(10, 300 * k * 0.28)} fill="url(#pc-contact)" />
         </svg>
+        {/* "arena": the house lights go out; only the spotlight pool and the free throw line stay lit */}
+        {dark > 0.001 && (
+          <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+            <defs>
+              <filter id="pc-holes" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation={18} /></filter>
+              <mask id="pc-housemask" maskUnits="userSpaceOnUse" x={0} y={0} width={1080} height={1920}>
+                <rect x={0} y={0} width={1080} height={1920} fill="#fff" />
+                <g filter="url(#pc-holes)">
+                  <ellipse cx={feet.x} cy={feet.y} rx={coneW * 1.45} ry={coneW * 0.42} fill="#000" />
+                  <path d={pcBand(P, [[-6.5, PC_FT_Y + 0.08], [6.5, PC_FT_Y + 0.08]], 0.9)} fill="#000" />
+                  <path d={`M${feet.x - coneW * 0.22} ${coneTop} L${feet.x + coneW * 0.22} ${coneTop} L${feet.x + coneW * 1.2} ${feet.y} L${feet.x - coneW * 1.2} ${feet.y} Z`} fill="#000" opacity={0.7 * spot} />
+                </g>
+              </mask>
+            </defs>
+            <rect x={0} y={0} width={1080} height={1920} fill="#04060A" opacity={0.78 * dark} mask="url(#pc-housemask)" />
+          </svg>
+        )}
+        <PictureCourtArena P={P} f={f} rise={rise} dark={dark} flash={prog(f, t.watching - 8, 6)} flashFrom={t.arena + 4} layer="flashes" />
         {/* the spotlight cone, behind him and on the boards */}
         {spot > 0 && (
           <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
@@ -224,6 +267,23 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
             <ellipse cx={feet.x} cy={feet.y} rx={coneW * 1.25} ry={coneW * 0.3} fill="url(#pc-pool2)" opacity={spot} />
           </svg>
         )}
+        {/* the pivot: a chalk arrow around his feet, and the smear of the turn */}
+        {arrowOp > 0.01 && arrowT > 0 && (
+          <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+            <path d={pcBand(P, pcCut(pcArc(sx, sy, 1.9, 0.45 * Math.PI, 1.3 * Math.PI), arrowT), 0.22)} fill="#FFFFFF" opacity={0.85 * arrowOp} />
+            {arrowT > 0.96 && (() => {
+              const a = 1.3 * Math.PI, r = 1.9;
+              const tipP: [number, number] = [sx + r * Math.cos(a), sy + r * Math.sin(a)];
+              const tx = -Math.sin(a), ty = Math.cos(a);
+              return <path d={pcPoly(P, [[tipP[0] + tx * 0.9, tipP[1] + ty * 0.9], [tipP[0] + Math.cos(a) * 0.55, tipP[1] + Math.sin(a) * 0.55], [tipP[0] - Math.cos(a) * 0.55, tipP[1] - Math.sin(a) * 0.55]])} fill="#FFFFFF" opacity={0.9 * arrowOp} />;
+            })()}
+          </svg>
+        )}
+        {pivMoving && [6, 3].map((lag, gi) => (
+          <div key={gi} style={{ position: "absolute", left: shaqLeft, top: shaqTop, width: IMG_W * k, height: h, opacity: 0.18 + 0.1 * gi, transform: pivTf(pivAt(f - lag)), transformOrigin: `${FEET_X * k}px ${h}px`, filter: "blur(3px)" }}>
+            <Img src={SHAQ} style={{ position: "absolute", left: 0, top: 0, width: IMG_W * k, height: h }} />
+          </div>
+        ))}
         {/* Shaq, the grab and the ball, in the cut-out's own pixels */}
         <div
           style={{
@@ -234,11 +294,19 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
         >
           <Img src={SHAQ} style={{ position: "absolute", left: 0, top: 0, width: IMG_W * k, height: h }} />
           <svg width={IMG_W * k} height={h} viewBox={`0 0 ${IMG_W} ${IMG_H}`} style={{ position: "absolute", left: 0, top: 0, overflow: "visible" }}>
-            <g transform={`translate(${PICTURE_COURT_GRAB_AT[0]} ${PICTURE_COURT_GRAB_AT[1]}) rotate(${PICTURE_COURT_GRAB_ANGLE}) scale(0.8)`}>
-              <PictureCourtGrab f={f} reach={reach} clamp={clamp} bloom={bloom} />
+            {/* undo his pivot squeeze here: the defender is not turning */}
+            <g transform={`translate(${PICTURE_COURT_GRAB_AT[0]} ${PICTURE_COURT_GRAB_AT[1]}) scale(${(1 / sxScale).toFixed(4)} 1) rotate(${PICTURE_COURT_GRAB_ANGLE}) scale(0.8)`}>
+              <PictureCourtGrab f={f} reach={reach} clamp={clamp} bloom={bloom} hit={f >= t.grabs ? f - t.grabs : -1} />
             </g>
           </svg>
         </div>
+        {passGhosts.length > 0 && (
+          <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+            <defs><filter id="pc-passblur"><feGaussianBlur stdDeviation={6} /></filter></defs>
+            <path d={`M${passGhosts[passGhosts.length - 1].x} ${passGhosts[passGhosts.length - 1].y} ${passGhosts.map((g) => `L${g.x} ${g.y}`).reverse().join(" ")} L${bx} ${by}`} stroke="#FFFFFF" strokeWidth={bsz * 0.5} strokeLinecap="round" fill="none" opacity={0.22} filter="url(#pc-passblur)" />
+            {passGhosts.map((g, i) => <circle key={i} cx={g.x} cy={g.y} r={g.s * 0.45} fill="#D9622B" opacity={0.28 - g.d} filter="url(#pc-passblur)" />)}
+          </svg>
+        )}
         {ballOn && (
           <Img
             src={BALL}
@@ -251,7 +319,7 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
         )}
         {/* the referee's call: the closed fist straight up at the edge of frame */}
         {fistUp > 0.001 && (
-          <div style={{ position: "absolute", left: 30, top: lerp(1950, 1010, fistUp), width: 400, height: 1000, transform: "scale(0.56) rotate(6deg)", transformOrigin: "0 0" }}>
+          <div style={{ position: "absolute", left: -40, top: lerp(1950, 1150, fistUp), width: 400, height: 1000, transform: "scale(0.4) rotate(8deg)", transformOrigin: "0 0", filter: "brightness(0.8) saturate(1.1) contrast(1.05) blur(0.6px) drop-shadow(0 10px 14px rgba(0,0,0,0.55))" }}>
             <BackwardsScorebugArm f={f} />
           </div>
         )}
@@ -273,7 +341,7 @@ export const PictureCourt: React.FC & { keep?: boolean } = () => {
       {/* the top of the stage fades into the navy so the caption band stays clean */}
       <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 640, background: `linear-gradient(${BG} 0%, ${BG} 62%, rgba(13,17,23,0) 100%)` }} />
       {/* the cut-out's credit */}
-      <div style={{ position: "absolute", right: 40, top: 1408, fontFamily: FONT, fontSize: 20, color: GREY, opacity: credit }}>Bigmoe797, CC BY-SA 4.0</div>
+      <div style={{ position: "absolute", left: 40, top: 1452, fontFamily: FONT, fontSize: 20, color: GREY, opacity: credit }}>Bigmoe797, CC BY-SA 4.0</div>
     </AbsoluteFill>
   );
 };

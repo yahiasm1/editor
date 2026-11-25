@@ -84,3 +84,25 @@ the house dark and the spotlight on him. Cut-out: `picturecourt-shaq-lakers.png`
 - check.py render on 23.4-33.1: longest still stretch 0.27 s. The handover out of `picture` shows bare ground only
   because `clank` (ClankSideOn) is still a stub: with keep = true, clank must draw from its first frame, starting on
   PICTURE_COURT_END_CAM.
+
+## Review pass (fresh-eyes notes applied)
+
+- grabs: the defender is now a body. Hand, then a 1 ft forearm (400 units at ~412 per foot in the hand frame), a
+  bent elbow (olecranon underneath, crease on top), a 1.35 ft upper arm rising to the shoulder, the deltoid and a
+  slice of a green road jersey (armhole piping, mesh, folds, shorts below) cut by the right edge. Skin: lit top edge
+  from the upper left, dark underside, flexor bulge, triceps shade, sweat sheen like Shaq's own shoulder, a grain,
+  a 1.4 px softness to sit in the photo's focus. The defender is counter-scaled against Shaq's pivot squeeze.
+  Foul red: the marks pop past full size on "grabs" (7 frames), a red glow on his forearm and a red/white shock
+  ring running out from the grip.
+- catches: the camera reaches a tight catch framing (Shaq ~690 px tall) on "catches", then eases back on "under the
+  basket" until the ring sits above him. The pass comes from off the right edge, bigger, with a blurred streak.
+- turn: he leans 6 deg onto the pivot foot with a 15% shoulder squeeze, two motion ghosts while he moves, a chalk
+  pivot arrow draws around his feet and lands its head on "turn"; a small camera hit freezes it.
+- crowd: rebuilt from the Capital One photo: shoulders and heads of every size, overlapping, jittered off the grid,
+  mostly dark clothes, three focus levels (nearer = softer), 72% light; the LED ribbon carries the colour.
+- referee fist: smaller (0.4), cropped by the left edge, toned down; the credit fades while it is up.
+- arena: a mask darkens the whole house except the spotlight pool and the free throw line; flashes are drawn above
+  the darkness, smaller and more of them. Credit moved to the left edge at y 1452, clear of the measure.
+- Stills checked: 23.9, 24.25, 24.7, 24.95, 25.4, 25.9, 26.5, 26.9, 27.35, 27.7, 28.1, 28.35, 28.6, 28.85, 29.5,
+  30.25, 30.9, 31.3, 31.6, 32.2, 32.5, 32.8. check.py render on 23.4-32.9: longest still 0.27 s, 0 bare frames
+  into picture and into clank.

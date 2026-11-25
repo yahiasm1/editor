@@ -58,7 +58,7 @@ export const PhotoDevelopingTray: React.FC<{ V: TrayView; f: number; o?: number 
       {/* the rim */}
       <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={28} fill="url(#pdEnamel)" />
       <rect x={-w / 2 + 3} y={-h / 2 + 3} width={w - 6} height={h - 6} rx={26} fill="none" stroke="#1F2A44" strokeWidth={6} />
-      <path d={`M ${-w / 2 + 4} ${-h / 2 + 48} L ${-w / 2 - 20} ${-h / 2 - 8} L ${-w / 2 + 48} ${-h / 2 + 4} Z`} fill="#ECE8DE" stroke="#1F2A44" strokeWidth={5} strokeLinejoin="round" />
+      <path d={`M ${-w / 2 + 3} ${-h / 2 + 40} Q ${-w / 2 - 12} ${-h / 2 - 12} ${-w / 2 + 40} ${-h / 2 + 3}`} fill="#ECE8DE" stroke="#1F2A44" strokeWidth={5} strokeLinecap="round" />
       {/* inside: the far wall (seen), the side walls, the floor */}
       <rect x={-iw / 2} y={-ih / 2} width={iw} height={ih} rx={16} fill="#C7C2B6" />
       <rect x={-iw / 2 + 6} y={-ih / 2 + depth} width={iw - 12} height={ih - depth - 4} rx={12} fill="#DAD5CA" />

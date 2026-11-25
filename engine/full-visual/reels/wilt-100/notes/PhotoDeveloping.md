@@ -73,3 +73,11 @@ tray turns into the famous photo of Wilt holding that very sheet. A stranger rea
 on the spot with a sheet of paper and a camera that happened to be there.
 
 Amber: only the flashbulb (a witness).
+
+## Built (2026-11-25)
+
+Files: `scenes/PhotoDeveloping.tsx` + `PhotoDevelopingKit.ts`, `Room`, `Tray`, `Sheet`, `Camera`. Assets in
+`public/wilt-100/`: `photodeveloping-100-photo.jpg` (the AP photo, 1000 px), `photodeveloping-ink-100.png` (its
+marker strokes, cut out and de-rotated), `photodeveloping-speed-graphic.png` (the FBI camera photo, cut out).
+Images are read as data URLs under delayRender so SVG `<image>` never paints late.
+Render note: the bundle needs `--public-only nba-floor` while nba-floor loads its DejaVu font at module scope.

@@ -3,7 +3,7 @@
 // AP photo (cut from it, de-rotated, `photodeveloping-ink-100.png`), revealed along traced centre lines, in the order
 // a hand writes them, the marker tip riding each stroke. Then the sheet settles at the photo's tilt.
 import React from "react";
-import { PD_DIM, PD_HAIR, PD_PAPER, pdClamp, pdK, pdLerp, pdRnd, type PhotoT } from "./PhotoDevelopingKit";
+import { PD_CARD, PD_DIM, PD_HAIR, PD_PAPER, pdClamp, pdK, pdLerp, pdRnd, type PhotoT } from "./PhotoDevelopingKit";
 import { ease } from "../../../src/engine";
 
 // the ink image is 700 x 500; these are the centre lines of the three strokes in its pixels, in writing order
@@ -97,8 +97,8 @@ export const PhotoDevelopingSheet: React.FC<{ f: number; T: PhotoT; V: SheetView
       <path d={outline} fill="none" stroke="rgba(0,0,0,0.12)" strokeWidth={1.5} />
       {/* Harvey Pollack's label, under the sheet, a word and a hairline */}
       <g opacity={label} transform={`rotate(${-V.rot}) translate(0 ${h / 2 + 40})`}>
-        <line x1={-180} y1={-14} x2={180} y2={-14} stroke={PD_HAIR} strokeWidth={2 / V.s} />
-        <text x={0} y={28} textAnchor="middle" fontFamily={font} fontSize={36 / V.s} fill={PD_DIM}>
+        <rect x={-230 / V.s} y={-14 / V.s} width={460 / V.s} height={58 / V.s} rx={10 / V.s} fill={PD_CARD} stroke={PD_HAIR} strokeWidth={2 / V.s} />
+        <text x={0} y={28 / V.s} textAnchor="middle" fontFamily={font} fontSize={34 / V.s} fill="#C9D1D9">
           Harvey Pollack, team PR
         </text>
       </g>

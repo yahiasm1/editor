@@ -155,8 +155,8 @@ export const PhotoDeveloping: React.FC = () => {
   const cs = pdLerp(1, 1.96, onSheet);
 
   // the print in the tray: developing after the flash, then lifted out
-  const devK = pdK(f, T.snapped + 6, T.up - 6 - (T.snapped + 6), ease.linear);
-  const amp = pdClamp(devK / 0.15);
+  const devK = pdK(f, T.snapped + 3, T.up - 6 - (T.snapped + 3), ease.linear);
+  const amp = pdClamp(devK / 0.3);
   const gamma = 1 + 22 * Math.pow(1 - devK, 2.4);
   const P = pdPrintView(Vt, lift);
   const wet = 0.15 + 0.85 * (1 - pdK(f, T.up, 30, ease.linear)) * pdK(f, T.up - 16, 6);
@@ -169,7 +169,7 @@ export const PhotoDeveloping: React.FC = () => {
   const [bx, by] = pdBulbAt(Vc);
   const flashO = f >= T.snapped && f < T.snapped + 16 ? (f - T.snapped < 3 ? 0.94 : 0.94 * Math.exp(-(f - T.snapped - 3) / 3.5)) : 0;
 
-  const trayDim = 1 - 0.6 * pdK(f, T.photographer - 4, 20) * (1 - down);
+  const trayDim = 1 - 0.72 * pdK(f, T.photographer - 4, 20) * (1 - down);
   const tongs = pdK(f, T.up - 26, 8, ease.out);
   return (
     <div style={{ ...FULL, overflow: "hidden", background: "#0D1117" }}>
@@ -177,10 +177,35 @@ export const PhotoDeveloping: React.FC = () => {
         <PhotoDevelopingRoomDefs />
         <PhotoDevelopingTrayDefs amp={amp} gamma={gamma} />
         <PhotoDevelopingSheetDefs />
+        <defs>
+          <radialGradient id="pdDownLight" cx="540" cy="900" r="760" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="rgba(13,17,23,0.15)" />
+            <stop offset="1" stopColor="rgba(13,17,23,0.85)" />
+          </radialGradient>
+        </defs>
         <g opacity={roomO} transform={`translate(0 ${roomY}) translate(540 900) scale(${push}) translate(-540 -900)`}>
           <PhotoDevelopingRoom f={f} light={light} />
         </g>
-        <PhotoDevelopingTray V={Vt} f={f} o={(1 - lift) * trayDim} />
+        {/* looking down: the bench's slats under the tray, worn, lit from the bulb above */}
+        {down > 0.01 && (
+          <g opacity={down * (1 - 0.6 * lift)} transform={`translate(540 ${Vt.cy}) scale(${Vt.s / 1.25}) translate(-540 ${-Vt.cy})`}>
+            {Array.from({ length: 9 }, (_, i) => {
+              const y = 380 + i * 150;
+              return (
+                <g key={i}>
+                  <rect x={-60} y={y} width={1200} height={138} fill="url(#pdBenchTop)" />
+                  <rect x={-60} y={y} width={1200} height={3} fill="rgba(255,225,180,0.22)" />
+                  {Array.from({ length: 7 }, (_, j) => (
+                    <path key={j} d={`M ${-60 + j * 180 + pdRnd(i * 9 + j) * 60} ${y + 20 + pdRnd(i + j * 3) * 90} q 60 ${4 + pdRnd(j) * 6} 140 0`} stroke="rgba(45,28,12,0.35)" strokeWidth={1.6} fill="none" />
+                  ))}
+                  <circle cx={120 + (i % 2) * 840} cy={y + 69} r={5} fill="#2A2018" stroke="#9A8060" strokeWidth={1} />
+                </g>
+              );
+            })}
+            <rect x={-60} y={300} width={1200} height={1500} fill="url(#pdDownLight)" />
+          </g>
+        )}
+        <PhotoDevelopingTray V={Vt} f={f} o={pdClamp(1 - lift * 2.2) * trayDim} />
         {f >= land && lift <= 0 && <g opacity={trayDim}><PhotoDevelopingPrint P={P} dev={amp} wet={wet} src={img.photo} /></g>}
         {f >= land - 2 && <PhotoDevelopingLiquid V={Vt} f={f} land={land} fade={(1 - lift) * trayDim} />}
         {fall && (

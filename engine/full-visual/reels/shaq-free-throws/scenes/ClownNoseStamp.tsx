@@ -91,13 +91,13 @@ export const ClownNoseStampBody: React.FC<{ squash: number; wet: number }> = ({ 
       </g>
       {/* the knob: collar, waisted neck, ball */}
       <ellipse cx={0} cy={yFront - frontH - topH / 2} rx={96} ry={22} fill="#5E3A1C" opacity={0.45} />
-      <path d={`M-84 ${yFront - frontH - topH / 2} C-84 ${yFront - frontH - topH / 2 - 26} -46 ${yFront - 190} -36 ${yFront - 230} L36 ${yFront - 230} C46 ${yFront - 190} 84 ${yFront - frontH - topH / 2 - 26} 84 ${yFront - frontH - topH / 2} Z`} fill="url(#cn-neck)" />
+      <path d={`M-84 ${yFront - frontH - topH / 2} C-84 ${yFront - frontH - topH / 2 - 26} -46 ${yFront - 150} -36 ${yFront - 178} L36 ${yFront - 178} C46 ${yFront - 150} 84 ${yFront - frontH - topH / 2 - 26} 84 ${yFront - frontH - topH / 2} Z`} fill="url(#cn-neck)" />
       <ellipse cx={0} cy={yFront - frontH - topH / 2} rx={86} ry={17} fill="#C99560" />
       <ellipse cx={0} cy={yFront - frontH - topH / 2 - 3} rx={80} ry={13} fill="#E1B47F" />
-      <ellipse cx={0} cy={yFront - 232} rx={46} ry={12} fill="#8E5A2E" />
-      <circle cx={0} cy={yFront - 300} r={78} fill="url(#cn-knob)" />
-      <ellipse cx={26} cy={yFront - 336} rx={24} ry={13} fill="#FFF3DF" opacity={0.75} transform={`rotate(-28 26 ${yFront - 336})`} />
-      <path d={`M-62 ${yFront - 262} A78 78 0 0 0 58 ${yFront - 248}`} stroke="#3B2310" strokeWidth={3} fill="none" opacity={0.35} />
+      <ellipse cx={0} cy={yFront - 178} rx={40} ry={12} fill="#8E5A2E" />
+      <circle cx={0} cy={yFront - 250} r={78} fill="url(#cn-knob)" />
+      <ellipse cx={26} cy={yFront - 286} rx={24} ry={13} fill="#FFF3DF" opacity={0.75} transform={`rotate(-28 26 ${yFront - 286})`} />
+      <path d={`M-62 ${yFront - 212} A78 78 0 0 0 58 ${yFront - 198}`} stroke="#3B2310" strokeWidth={3} fill="none" opacity={0.35} />
     </svg>
   );
 };
@@ -124,11 +124,11 @@ export const ClownNoseImpression: React.FC<{ ink: number; wet: number; spatter: 
           <feDisplacementMap in="SourceGraphic" in2="warp" scale="7" xChannelSelector="R" yChannelSelector="G" result="rough" />
           {/* starved speckle: where the die did not pick up ink */}
           <feTurbulence type="fractalNoise" baseFrequency="0.38" numOctaves="2" seed="11" result="grain" />
-          <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -9 4.3" result="holes" />
+          <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -14 7.9" result="holes" />
           <feComposite in="rough" in2="holes" operator="out" result="speck" />
           {/* bigger blotches of thin ink */}
           <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="3" result="blot" />
-          <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.05" result="thin" />
+          <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3.2 2.45" result="thin" />
           <feComposite in="speck" in2="thin" operator="in" />
         </filter>
         <filter id="cn-edge" x="-10%" y="-20%" width="120%" height="140%">
