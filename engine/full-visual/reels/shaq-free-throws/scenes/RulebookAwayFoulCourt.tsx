@@ -242,7 +242,7 @@ export const RulebookAwayFoulCourt: React.FC<{ P: PcProj; st: RulebookAwayFoulCo
           </div>
         </>
       )}
-      <div style={{ position: "absolute", left: 40, top: 1452, fontFamily: "Inter, sans-serif", fontSize: 20, color: GREY, opacity: st.credit }}>Bigmoe797, CC BY-SA 4.0</div>
+      <div style={{ position: "absolute", left: 40, top: 1474, fontFamily: "Inter, sans-serif", fontSize: 20, color: "#C9D1D9", textShadow: "0 1px 3px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.7)", opacity: st.credit }}>Bigmoe797, CC BY-SA 4.0</div>
     </>
   );
 };

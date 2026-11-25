@@ -285,7 +285,7 @@ export const RulebookAwayFoul: React.FC = () => {
           overflow: "hidden",
           boxShadow: win > 0.5 ? `0 0 0 1px rgba(48,54,61,${win.toFixed(2)}), 0 24px 60px rgba(0,0,0,${(0.5 * win).toFixed(2)})` : undefined,
           transform: `translateY(${bookY.toFixed(1)}px)`,
-          opacity: Math.min(1, bookIn * 1.6),
+          opacity: Math.min(1, bookIn * 4),
           perspective: 5200,
         }}
       >

@@ -136,7 +136,7 @@ const GrannyShotShaqLegs: React.FC<{ alpha: number }> = ({ alpha }) => {
         </linearGradient>
         <linearGradient id="gs-shaq-skin" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#1F1612" />
-          <stop offset="0.45" stopColor="#4A3429" />
+          <stop offset="0.45" stopColor="#35251D" />
           <stop offset="1" stopColor="#241913" />
         </linearGradient>
       </defs>
@@ -316,11 +316,11 @@ export const GrannyShot: React.FC = () => {
   // ---- the copy: the same path offered to Shaq, from his knees; it snaps back off him and he turns away
   const knee = { x: SB.x + 26, y: SHAQ_KNEE_Y };
   const cpy = (u: number) => cubic({ x: RING_B.x, y: RING_B.y - 6 }, { x: 470, y: 520 }, { x: 250, y: 560 }, knee, u); // ring -> knees
-  const reach = prog(f, t.swish + 2, t.shot - t.swish - 2, ease.inOut);
+  const reach = prog(f, t.swish, t.granny + 8 - t.swish, ease.inOut); // drawn over "granny", it touches his knees until "shot"
   const snapK = prog(f, t.shot, 10, ease.back);
   const copyLen = Math.max(0, reach - snapK * 1.06);
   const burst = prog(f, t.shot, 12, ease.out);
-  const legsIn = prog(f, t.hall + 4, 16, ease.out) * (1 - prog(f, t.and, 12, ease.inOut));
+  const legsIn = prog(f, t.hall + 16, 10, ease.out) * (1 - prog(f, t.and, 12, ease.inOut));
 
   // ---- the quote card slams on "zero", settles on "percent", the strike ends on "underhanded"
   const slam = prog(f, t.zero - 6, 6, ease.in);
@@ -542,9 +542,20 @@ export const GrannyShot: React.FC = () => {
           </g>
         )}
         {/* the coach's hand */}
+        <defs>
+          <linearGradient id="gs-hand-fade" x1="0" y1="1370" x2="0" y2="1445" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#FFFFFF" />
+            <stop offset="1" stopColor="#000000" />
+          </linearGradient>
+          <mask id="gs-hand-mask" maskUnits="userSpaceOnUse" x={0} y={0} width={1080} height={1920}>
+            <rect x={0} y={0} width={1080} height={1920} fill="url(#gs-hand-fade)" />
+          </mask>
+        </defs>
         {f >= t.coach - 12 && handOut < 1 && (
+          <g mask="url(#gs-hand-mask)">
           <g transform={`translate(${tip.x.toFixed(1)},${tip.y.toFixed(1)}) rotate(${handRot.toFixed(2)}) translate(0,${handBack.toFixed(1)}) scale(${handScale.toFixed(4)})`} style={{ filter: "drop-shadow(0 10px 14px rgba(0,0,0,0.55))" }}>
             <GrannyShotHand press={press} />
+          </g>
           </g>
         )}
       </svg>

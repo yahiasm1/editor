@@ -62,5 +62,5 @@ free throw either."
     onto the boards; the quarter drops onto the line and spins.
 - Sound-off test: a man in front of his four trophies; then the same man on the line, a hand that cannot hold him,
   and a free throw that clanks anyway. Strong and terrible at once, which is the story.
-- Compromise, on purpose: the quarter is drawn about six times its real size so it reads at this distance (at true
+- Compromise, on purpose: the quarter is drawn about nine times its real size so it reads at this distance (at true
   size it would be 8 px); it is the reel's coin-flip callback, not a measurement.

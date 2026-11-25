@@ -69,3 +69,24 @@ The ring is not at scale (10 ft would be in the caption): it hangs at the top be
 A tall man in purple with a ball, a hand fixing his elbow; an older man in a 70s Warriors kit, shorter, shooting from
 between his knees and swishing; that path offered to the big man and bouncing off him; a card in his words saying
 he'd rather shoot zero percent. The story reads without the voice.
+
+## Revision after review (all nine notes)
+
+- Strobe: the paper dolls are gone. `grannyshot-ink-*.png` is one ink drawing traced off Russ Reed's photo (XDoG lines
+  plus a grey wash from the real cut-out: shaggy hair over the ears, the jersey and its folds, the shorts' side
+  stripe, the ringed socks, the 3-stripe Adidas, his face drawn in the same ink), cut at the shoulders and hips and
+  posed (GrannyShotFigure). The photo's raised left arm is the straight one, so it serves both sides (mirrored).
+  Frames every 8 frames across "teach him his" (57.94-58.33), release teach+26, swish at the end of "underhand".
+- Ghosts fade from granny-12 and are gone by "granny"; the real photo is the clean follow-through.
+- Coach's hand: a real hand, cut out of Evan-Amos's photo (`commons-human-hands-front-back-evanamos-ccbysa3.jpg`,
+  CC BY-SA 3.0, credited on the stage), a barrel shirt cuff with stitching and a button, a wool sleeve faded out
+  above the credit band. It presses on "coach", pushes the elbow in on "just", pats twice on "him", leaves on "Hall".
+- Shaq at true scale stands on the floor: the shorts run on in a purple wash to the hem, legs in a dark skin wash
+  with ink contours, knees at 2 ft, socks and shoes on the floor line, a contact shadow, the floor line faded under
+  him. They arrive once the widen has settled.
+- Cut-out cleaned (the crowd behind his left elbow and right hip removed), bottom fade now 80-86 % (ends by 1450).
+- The card opens with his photo on "Rick"; its credit sits at the card's bottom right.
+- Centred for the quote, Shaq's crown is at 732 and the ring shrinks to k 76 at y 572 (net bottom 686).
+- The strobe loop behind the quote card is cut.
+- Both arcs have their peaks solved to stay below 520 (530 for "him.", 532 for Barry's).
+- The copy draws over "granny", rests on his knees, and snaps back on "shot".

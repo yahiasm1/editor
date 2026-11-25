@@ -82,7 +82,10 @@ function useCloseTrophiesTimes() {
 }
 
 /** the hook's frame: behind the shooter on the line (the camera `picture` ends on), a little higher on the stage */
-const CLOSE_TROPHIES_CAM_LINE: PcCam = { ...PICTURE_COURT_END_CAM, cy: 960 };
+// the shot: the broadcast free-throw angle, raised behind the shooter so the ball's climb to the rim reads
+const CLOSE_TROPHIES_CAM_LINE: PcCam = { ...PICTURE_COURT_END_CAM, tx: 0, ty: 7, tz: 3.5, D: 24, pitch: (20 * Math.PI) / 180, F: 1150, cy: 1040 };
+/** the hook's frame, close: Shaq big on the line while the hand tries to hold him */
+const CLOSE_TROPHIES_CAM_CLOSE: PcCam = { ...PICTURE_COURT_END_CAM, tx: 0.6, ty: 12.5, tz: 4.3, D: 12.5, cy: 1000 };
 /** where the court comes in from: higher and further back, looking down the lane */
 const CLOSE_TROPHIES_CAM_HIGH: PcCam = { ...PICTURE_COURT_END_CAM, D: 30, tz: 6.5, pitch: (24 * Math.PI) / 180, cy: 900 };
 
@@ -91,7 +94,7 @@ export const CloseTrophies: React.FC = () => {
   const t = useCloseTrophiesTimes();
 
   // ---------- part one: the trophy room ----------
-  const away = prog(f, t.so - 10, 22, ease.inOut); // the room shrinks into the corner
+  const away = prog(f, t.so - 12, 18, ease.out); // the room shrinks into the corner, mostly gone before the court is up
   const cardIn = arrive(f, t.in, 16);
   const cardPop = f >= t.shaq ? Math.exp(-(f - t.shaq) / 7) * Math.sin((f - t.shaq) * 0.5) : 0;
   const cardSmall = prog(f, t.he - 2, 16, ease.inOut);
@@ -106,7 +109,7 @@ export const CloseTrophies: React.FC = () => {
     const p = prog(f, landAt(i) - 11, 11, ease.in);
     const since = f - landAt(i);
     const squash = since >= 0 ? Math.exp(-since / 5) * Math.cos(since * 0.7) : 0;
-    return { y: (1 - p) * -520, op: prog(f, landAt(i) - 11, 4), squash, since };
+    return { y: (1 - p) * -320, op: prog(f, landAt(i) - 11, 4), squash, since };
   };
   // the shelf takes each landing
   let shelfJolt = 0;
@@ -130,10 +133,13 @@ export const CloseTrophies: React.FC = () => {
   const labelsOp = 1 - prog(f, t.so - 12, 8);
 
   // ---------- part two: back at the line ----------
-  const courtIn = prog(f, t.so - 12, 20, ease.out);
-  let cam = pcMixCam(CLOSE_TROPHIES_CAM_HIGH, CLOSE_TROPHIES_CAM_LINE, prog(f, t.so - 12, t.teams + 6 - (t.so - 12), ease.inOut));
-  // a slow push once he is free, and a held breath on the follow
-  cam = { ...cam, D: cam.D * (1 - 0.1 * prog(f, t.down, t.send - t.down, ease.inOut)) };
+  const courtIn = prog(f, t.so - 6, 16, ease.out);
+  let cam = pcMixCam(CLOSE_TROPHIES_CAM_HIGH, CLOSE_TROPHIES_CAM_CLOSE, prog(f, t.so - 12, t.teams + 6 - (t.so - 12), ease.inOut));
+  // a slow push while the hand works on him
+  cam = { ...cam, D: cam.D * (1 - 0.06 * prog(f, t.teams, t.slow - t.teams, ease.linear)) };
+  // free: the camera eases back until the rim is in the frame for the last shot
+  cam = pcMixCam(cam, CLOSE_TROPHIES_CAM_LINE, prog(f, t.down - 4, t.follow + 10 - (t.down - 4), ease.inOut));
+  cam = { ...cam, D: cam.D * (1 - 0.05 * prog(f, t.follow + 10, t.send - t.follow - 10, ease.linear)) };
   // the floor shakes as he steps forward
   const stepLand = t.slow + 10;
   const shk = f >= stepLand ? Math.exp(-(f - stepLand) / 6) : 0;
@@ -171,7 +177,7 @@ export const CloseTrophies: React.FC = () => {
 
   // the ball: in his hand, lifted on "send", released on "who", off the front rim on "either"
   const handX = shaqLeft + HAND[0] * k, handY = shaqTop + HAND[1] * k;
-  const A: [number, number, number] = [sx + 0.15, sy - 0.6, 9.3];
+  const A: [number, number, number] = [sx + 0.1, sy - 0.5, 8.7];
   const C: [number, number, number] = [0, 0.75 + BALL_FT / 2 + 0.06, 10.2];
   const hitF = t.either - 1;
   const rel = t.who;
@@ -182,14 +188,15 @@ export const CloseTrophies: React.FC = () => {
     ballX = lerp(handX, pA.x, q); ballY = lerp(handY, pA.y, q) - Math.sin(q * Math.PI) * 20; ballS = lerp(BALL_PX * k, BALL_FT * pA.s, q);
     ballRot = q * 40;
   } else if (f >= rel && f < hitF) {
-    const u = (f - rel) / (hitF - rel);
-    const x = lerp(A[0], C[0], u), y = lerp(A[1], C[1], u), z = lerp(A[2], C[2], u) + 4 * 4.6 * u * (1 - u);
+    // slow off his hands, quick into the rim: the far half of a flight is short on screen
+    const u = Math.pow((f - rel) / (hitF - rel), 1.7);
+    const x = lerp(A[0], C[0], u), y = lerp(A[1], C[1], u), z = lerp(A[2], C[2], u) + 4 * 1.8 * u * (1 - u);
     const p = P.p(x, y, z);
     ballX = p.x; ballY = p.y; ballS = BALL_FT * p.s; ballRot = 40 - (f - rel) * 14; // backspin
   } else if (f >= hitF) {
     // two bounces back toward the shooter, then a roll
     const s = f - hitF;
-    const B1: [number, number] = [0.7, 6.2], B2: [number, number] = [1.1, 9.4], B3: [number, number] = [1.3, 11.2];
+    const B1: [number, number] = [-2.2, 6.4], B2: [number, number] = [-3.8, 9.6], B3: [number, number] = [-4.6, 11.4];
     let x: number, y: number, z: number;
     if (s < 30) {
       const u = s / 30;
@@ -209,8 +216,8 @@ export const CloseTrophies: React.FC = () => {
   const ghostAt = (g: number) => {
     if (g < rel) return null;
     if (g < hitF) {
-      const u = (g - rel) / (hitF - rel);
-      const p = P.p(lerp(A[0], C[0], u), lerp(A[1], C[1], u), lerp(A[2], C[2], u) + 4 * 4.6 * u * (1 - u));
+      const u = Math.pow((g - rel) / (hitF - rel), 1.7);
+      const p = P.p(lerp(A[0], C[0], u), lerp(A[1], C[1], u), lerp(A[2], C[2], u) + 4 * 1.8 * u * (1 - u));
       return { x: p.x, y: p.y, s: BALL_FT * p.s };
     }
     return null;
@@ -223,7 +230,7 @@ export const CloseTrophies: React.FC = () => {
   const coinT = f - (t.either + 4);
   const coinOn = coinT >= -10;
   const coinPt = P.p(-2.4, PC_FT_Y + 0.08, 0);
-  const coinD = 0.0796 * 6 * coinPt.s;
+  const coinD = 0.0796 * 9 * coinPt.s;
   const coinFall = coinT < 0 ? (coinT / 10) * (coinT / 10) * 260 : 0;
   const spinAng = coinT > 0 ? 30 * (1 - Math.exp(-coinT / 26)) : 0;
   const settle = prog(coinT, 34, 14, ease.inOut);
@@ -323,11 +330,11 @@ export const CloseTrophies: React.FC = () => {
               return <circle key={i} cx={feet.x + (u - 0.5) * 2 * half * 0.9} cy={y} r={1 + pcRnd(i, 44) * 2.2} fill="#FFF8E8" opacity={(0.25 + pcRnd(i, 45) * 0.5) * spot} />;
             })}
           </svg>
-          <div style={{ position: "absolute", left: 40, top: 1452, fontFamily: FONT, fontSize: 20, color: GREY, opacity: 0.9 * (1 - cardRowIn * 0) }}>Bigmoe797, CC BY-SA 4.0</div>
+          <div style={{ position: "absolute", left: 40, top: 1436, fontFamily: FONT, fontSize: 20, color: "#C9D1D9", opacity: 0.9, textShadow: "0 1px 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.9)" }}>Bigmoe797, CC BY-SA 4.0</div>
         </AbsoluteFill>
       )}
       {/* the top of the stage fades into the navy so the caption band stays clean */}
-      {courtOp > 0.001 && <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 600, opacity: courtOp, background: `linear-gradient(${BG} 0%, ${BG} 62%, rgba(13,17,23,0) 100%)` }} />}
+      {courtOp > 0.001 && <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 640, opacity: courtOp, background: `linear-gradient(${BG} 0%, ${BG} 64%, rgba(13,17,23,0.75) 80%, rgba(13,17,23,0) 100%)` }} />}
 
       {/* ===== the trophy room ===== */}
       {roomOp > 0.001 && (
@@ -357,7 +364,7 @@ export const CloseTrophies: React.FC = () => {
                   </div>
                 )}
                 {/* its contact shadow */}
-                <div style={{ position: "absolute", left: cx - TROPHY_W * 0.55, top: SHELF_Y - 8, width: TROPHY_W * 1.1, height: 16, borderRadius: "50%", background: "rgba(0,0,0,0.6)", filter: "blur(6px)", opacity: d.since >= 0 ? 1 : Math.max(0, 1 + d.y / 520) * 0.5 }} />
+                <div style={{ position: "absolute", left: cx - TROPHY_W * 0.55, top: SHELF_Y - 8, width: TROPHY_W * 1.1, height: 16, borderRadius: "50%", background: "rgba(0,0,0,0.6)", filter: "blur(6px)", opacity: d.since >= 0 ? 1 : Math.max(0, 1 + d.y / 320) * 0.5 }} />
                 <div
                   style={{
                     position: "absolute", left: cx - TROPHY_W / 2, top: SHELF_Y - TROPHY_H + d.y + shelfJolt * 0.4, width: TROPHY_W, height: TROPHY_H, opacity: d.op,
@@ -415,7 +422,7 @@ export const CloseTrophies: React.FC = () => {
       )}
 
       {/* ===== the follow row ===== */}
-      <CloseTrophiesCard cx={540} top={1262 + (1 - cardRowIn) * 90} opacity={cardRowIn} blur={(1 - cardRowIn) * 10} press={press} following={following} ring={prog(f, t.follow, 30, ease.inOut)} />
+      <CloseTrophiesCard cx={540} top={1474 + (1 - cardRowIn) * 90} opacity={cardRowIn} blur={(1 - cardRowIn) * 10} press={press} following={following} ring={prog(f, t.follow, 30, ease.inOut)} />
     </AbsoluteFill>
   );
 };

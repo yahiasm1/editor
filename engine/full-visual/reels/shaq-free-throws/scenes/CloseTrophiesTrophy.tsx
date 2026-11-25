@@ -110,7 +110,10 @@ export const CloseTrophiesTrophy: React.FC<{ id: string; sweep: number; plate: n
       <circle cx={BALL.cx} cy={BALL.cy} r={BALL.r} fill={`url(#${g("ball")})`} />
       <g clipPath={`url(#${g("ballclip")})`}>
         {/* the dark horizon band of the room, bent by the sphere */}
-        <path d={`M0 ${92 + drift} C 50 ${118 + drift}, 150 ${118 + drift}, 200 ${88 + drift} L200 ${126 + drift} C 150 ${150 + drift}, 50 ${150 + drift}, 0 ${124 + drift} Z`} fill="#2A1A05" opacity={0.55} filter={`url(#${g("soft")})`} />
+        <path d={`M0 ${92 + drift} C 50 ${118 + drift}, 150 ${118 + drift}, 200 ${88 + drift} L200 ${126 + drift} C 150 ${150 + drift}, 50 ${150 + drift}, 0 ${124 + drift} Z`} fill="#24160A" opacity={0.85} filter={`url(#${g("soft")})`} />
+        {/* the room in the mirror: a lit doorway and the bright strip of the ceiling above the horizon */}
+        <rect x={44 + drift} y={70} width={22} height={30} rx={2} fill="#FFE2A0" opacity={0.6} filter={`url(#${g("soft")})`} />
+        <path d={`M14 ${84 + drift} C 60 ${100 + drift}, 140 ${100 + drift}, 186 ${80 + drift}`} stroke="#FFF1C4" strokeWidth={3} fill="none" opacity={0.5} />
         {/* warm floor below */}
         <rect x={0} y={130} width={200} height={70} fill={`url(#${g("floor")})`} />
         {/* the ceiling light and a window strip */}
