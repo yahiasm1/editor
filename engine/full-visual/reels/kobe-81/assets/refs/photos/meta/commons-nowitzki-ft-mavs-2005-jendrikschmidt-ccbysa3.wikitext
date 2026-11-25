@@ -1,0 +1,23 @@
+== {{int:filedesc}} ==
+{{Information
+|Description= Freiwurf Dirk Nowitzki beim NBA Spiel der Dallas Mavericks gegen den Gastgeber Charlotte Bobcats.
+|Source= selbst fotografiert (from Deutsch Wikipedia)
+|Date= {{Taken on|2005-11-11|location=United States}}
+|Author= [[:de:Benutzer:Kielerjunge|Jendrik Schmidt]]
+|Permission= CC-BY-SA-2.0
+|other_versions=
+}}
+
+== {{int:license-header}} ==
+{{self|GFDL|Cc-by-sa-3.0-migrated|Cc-by-sa-2.5,2.0,1.0}}
+
+[[Category:Dirk Nowitzki]]
+[[Category:2005–06 Charlotte Bobcats season]]
+[[Category:Basketball games at Spectrum Center]]
+[[Category:Emeka Okafor]]
+[[Category:Jason Terry]]
+[[Category:Brevin Knight]]
+[[Category:Erick Dampier]]
+[[Category:2005–06 Dallas Mavericks season]]
+[[Category:Free throw]]
+[[Category:Taken with Canon EOS 300D]]

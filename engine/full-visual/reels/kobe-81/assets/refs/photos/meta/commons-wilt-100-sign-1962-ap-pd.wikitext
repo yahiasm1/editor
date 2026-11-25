@@ -1,0 +1,35 @@
+== {{int:filedesc}} ==
+{{Information
+|description={{en|1=Wilt Chamberlain of the Philadelphia Warriors holds a sign reading "100"; in the dressing room in Hershey, Pa., after he scored 100 points to break a National Basketball Association scoring record as the Warriors defeated the New York Knickerbockers 169-147.}}
+|date=1962-03-02
+|source=[https://apnews.com/article/sports-nba-philadelphia-76ers-kobe-bryant-golden-state-warriors-fdcb2a908ad54b958f2a34a10e643896 Full Size photo here] [https://www.worthpoint.com/worthopedia/original-1962-wilt-chamberlain-100-151842625 Original Wirephoto]
+
+Archives: Wirephoto [https://web.archive.org/web/20240510030047/https://thumbs.worthpoint.com/zoom/images1/1/0511/08/original-1962-wilt-chamberlain-100_1_a78437f49a3093170f14d4274ac43969.jpg Front] [https://web.archive.org/web/20240510030146/https://thumbs.worthpoint.com/zoom/images2/1/0511/08/original-1962-wilt-chamberlain-100_1_a78437f49a3093170f14d4274ac43969.jpg Back] [https://web.archive.org/web/20240510030107im_/https://dims.apnews.com/dims4/default/0619333/2147483647/strip/true/crop/3000x3796+0+0/resize/1138x1440!/format/webp/quality/90/?url=https%3A%2F%2Fstorage.googleapis.com%2Fafs-prod%2Fmedia%2Fdfb2bd31191a4624bc77a57df9c11cbb%2F3000.jpeg HQ Photo]
+|author={{creator
+ |wikidata=Q7154146
+ }}
+|permission= Associated Press images distributed to news organizations in the United States between {{#expr:{{CURRENTYEAR}} - 95}} and 1963 [http://onlinebooks.library.upenn.edu/cce/ did not have their copyright renewed] and are in the public domain. See more in the AP Commons Category [[:Category:Photographs distributed by Associated Press|here]].
+
+[http://www.loc.gov/rr/print/res/155_wide.html The Library of Congress writes]: "In an attempt to determine if AP/Wide World registered any copyrights and if those copyrights were renewed, specialists in the Prints and Photographs Division of the Library of Congress searched the Copyright Office files. It was found that only a few images were registered for copyright and those copyrights were not renewed." No Registrations were made between 1962 and 1990 by either AP or Vathis.
+#This work was published before 1964, but the copyright was not renewed. As such, the opportunity for copyright protection on the photo was forfeited and it entered the public domain.
+#The source images linked above are mechanical scans of the underlying public domain work. These scans are faithful reproductions of the photograph that do not meet the [[COM:TOO|threshold of originality]] necessary to assert a copyright interest. 
+The image has been cropped to match the original WirePhoto release, as the picture in full may still be copyrighted by AP.
+|other versions={{Image extracted|1=Wilt Chamberlain 100 Point Game 1962 (original).jpg}}
+}}
+
+== {{int:license-header}} ==
+{{PD-old-auto-1964
+ |deathyear=2002
+}}{{PD-in
+ |work_type=photograph
+ |creation=1962-03-02
+ |publication=1962
+ |US_formalities=0
+ |US_published_first=1
+ |author_death=2002
+}}
+
+[[Category:Wilt Chamberlain]]
+[[Category:Photographs distributed by Associated Press]]
+[[Category:Paul Vathis]]
+[[Category:1962 in basketball]]

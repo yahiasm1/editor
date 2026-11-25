@@ -1,0 +1,16 @@
+== {{int:filedesc}} ==
+{{Information
+| Description = This is Lamar Odom's back.
+| Source      = [https://www.flickr.com/photos/compujeramey/71080846/ Lamar Odom]
+| Date        = 2005-12-06 21:26
+| Author      = [https://www.flickr.com/people/37171504@N00 Jeramey Jannene] from Milwaukee, WI, United States of America
+| Permission  = 
+| other_versions=
+}}
+
+=={{int:license-header}}==
+{{cc-by-2.0}}
+{{FlickreviewR|status=passed|author=compujeramey|sourceurl=https://flickr.com/photos/37171504@N00/71080846|archive=https://web.archive.org/web/20200521102107/https://www.flickr.com/photos/37171504@N00/71080846|reviewdate=2019-06-08 17:41:50|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:2005–06 Milwaukee Bucks season]]
+[[Category:Lamar Odom]]

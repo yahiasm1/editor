@@ -1,0 +1,20 @@
+== {{int:filedesc}} ==
+{{Information
+|Description=Kobe Bryant of the Los Angeles Lakers scores 81 points against visiting Toronto Raptors
+|Source=[https://www.flickr.com/photos/endlessbender/1239831375 Kobe 81 Points 011]
+|Date=2006-02-22
+|Author=[https://www.flickr.com/photos/endlessbender endlessbender]
+* Uploaded by [[User:JoeJohnson2|JoeJohnson2]]
+|Permission=
+|other_versions=
+}}
+{{Location dec|34.042302|-118.266963|source:Flickr}}
+
+== {{int:license-header}} ==
+{{cc-by-2.0}}
+{{User:FlickreviewR/reviewed-pass|endlessbender|https://www.flickr.com/photos/11996980@N02/1239831375|12:17, 14 July 2010 (UTC)|cc-by-2.0|}}
+
+[[Category:Kobe Bryant in 2006]]
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:2005–06 Toronto Raptors season]]
+[[Category:Basketball players from the United States in 2006]]

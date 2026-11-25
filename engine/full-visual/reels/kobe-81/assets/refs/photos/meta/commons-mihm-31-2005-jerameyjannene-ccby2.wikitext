@@ -1,0 +1,17 @@
+== {{int:filedesc}} ==
+{{Information
+|Description= "I am huge and I will palm the ball" - Chris Mihm
+|Source=[https://www.flickr.com/photos/37171504@N00/71083290/ Chris Mihm]
+|Date=2005-12-06 21:43
+|Author=[https://www.flickr.com/people/37171504@N00 Jeramey Jannene] from Milwaukee, WI, United States of America
+|Permission=
+|other_versions=
+}}
+
+== {{int:license-header}} ==
+{{cc-by-2.0}}
+{{User:FlickreviewR/reviewed-pass|compujeramey|https://www.flickr.com/photos/37171504@N00/71083290|09:55, 11 May 2007 (UTC)|cc-by-2.0}}
+
+[[Category:Chris Mihm]]
+[[Category:2005–06 Los Angeles Lakers season]]
+[[Category:Basketball media uploaded by User:Ytoyoda]]

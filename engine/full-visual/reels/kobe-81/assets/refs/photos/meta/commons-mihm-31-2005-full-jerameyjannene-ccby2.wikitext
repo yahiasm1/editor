@@ -1,0 +1,17 @@
+== {{int:filedesc}} ==
+{{Information
+| Description = &quot;I am huge and I will palm the ball&quot; - Chris Mihm
+| Source      = [https://www.flickr.com/photos/compujeramey/71083290/ Chris Mihm]
+| Date        = 2005-12-06 21:43
+| Author      = [https://www.flickr.com/people/37171504@N00 Jeramey Jannene] from Milwaukee, WI, United States of America
+| Permission  = 
+| other_versions={{extracted|Chris Mihm in 2005.jpg}}
+}}
+
+=={{int:license-header}}==
+{{cc-by-2.0}}
+{{FlickreviewR|status=passed|author=compujeramey|sourceurl=https://flickr.com/photos/37171504@N00/71083290|archive=http://web.archive.org/web/20160403055607/https://flickr.com/photos/37171504@N00/71083290|reviewdate=2019-06-27 03:40:51|reviewlicense=cc-by-2.0|reviewer=FlickreviewR 2}}
+
+[[Category:Chris Mihm]]
+[[Category:Free throw]]
+[[Category:2005–06 Los Angeles Lakers season]]

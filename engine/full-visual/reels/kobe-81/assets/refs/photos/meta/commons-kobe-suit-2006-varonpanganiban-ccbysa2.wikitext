@@ -1,0 +1,14 @@
+=={{int:filedesc}}==
+{{Information
+|description={{en|1=Kobe Bryant in 2006}}
+|date=2006-10-31 05:48:16
+|source=https://www.flickr.com/photos/74393192@N00/285048484/
+|author=Varon Panganiban
+|permission=
+|other versions=
+}}
+
+=={{int:license-header}}==
+{{cc-by-sa-2.0}}{{FlickreviewR|status=passed|author=varonp99|sourceurl=https://flickr.com/photos/74393192@N00/285048484|archive=|reviewdate=2020-10-16 15:24:38|reviewlicense=cc-by-sa-2.0|reviewer=FlickreviewR 2}}
+
+[[Category:Kobe Bryant in 2006]]
