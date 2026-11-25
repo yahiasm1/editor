@@ -1,0 +1,111 @@
+{
+  "note": "Credit line on screen: author, licence, as written in 'credit'. Small grey, top right inside the photo card (22 px). Licence and author read from each file's Commons metadata (API extmetadata) on 2026-11-25. A file missing from photos/ did not download (Commons rate limit): fetch it from 'url' before building with it. Popovich and both Barry photos were fetched at the critic pass as 960 px Commons thumbs. Still missing (429): the quarter, the Heat free throw, the Nelson courtside photo. Run assets/refs/fetch-missing.sh (one request a minute) before building the scenes that need them.",
+  "photos/commons-shaq-free-throw-suns-2009-keithallison-ccbysa2.jpg": {
+    "credit": "Keith Allison, CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Shaquille_O%27Neal_Free_Throw.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Shaquille_O%27Neal_Free_Throw.jpg/1920px-Shaquille_O%27Neal_Free_Throw.jpg",
+    "what": "Shaq (Suns #32, purple) at the free throw line, square, ball at his chest in both hands, 26 Jan 2009 at Washington. Crowd blurred behind. The shooting cut-out."
+  },
+  "photos/commons-shaq-2000-finals-bigmoe797-ccbysa4.jpg": {
+    "credit": "Bigmoe797, CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Shaq1_2000finals3.tif",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Shaq1_2000finals3.tif/lossy-page1-960px-Shaq1_2000finals3.tif.jpg",
+    "what": "Shaq full length in Lakers purple #34, 2000 NBA Finals (16 Jun 2000), standing on a gold painted lane, left hand on hip, fans courtside behind. The Lakers cut-out and the close."
+  },
+  "photos/commons-shaq-lakers-1999-lipofsky-ccby3.jpg": {
+    "credit": "Steve Lipofsky, CC BY 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lipofsky_Shaquille_O%27Neal.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Lipofsky_Shaquille_O%27Neal.jpg",
+    "what": "Shaq with the Lakers, 20 Dec 1999, at the free throw line in gold #34, ball overhead in his shooting motion. Small (199 x 300): a small card only, used once in 'clown'."
+  },
+  "photos/commons-shaq-free-throw-heat-2005-jannene-ccby2.jpg": {
+    "credit": "Jeramey Jannene, CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:O%27NealFT.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/O%27NealFT.jpg",
+    "what": "Shaq (Heat) shooting a free throw, 14 Dec 2005 (1036 x 1806). Alternative stance."
+  },
+  "photos/commons-shaq-dunk-suns-2009-keithallison-ccbysa2.jpg": {
+    "credit": "Keith Allison, CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:O%27Neal_dunks_for_Phoenix.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/O%27Neal_dunks_for_Phoenix.jpg",
+    "what": "Shaq dunking for Phoenix, 26 Jan 2009 (1662 x 2097). The wrecking ball half of 'split', the ghost dunk in 'clank'."
+  },
+  "photos/commons-don-nelson-2012-seanpanderson-ccby2.jpg": {
+    "credit": "Sean P. Anderson, CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Don_Nelson.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Don_Nelson.jpg",
+    "what": "Don Nelson grinning, head and shoulders, dark jacket, 19 Apr 2012 (725 x 1024). His nose sits at about x 300, y 315 of the full image (read it again before placing the clown nose)."
+  },
+  "photos/commons-don-nelson-warriors-2009-brokensphere-ccbysa3-1.jpg": {
+    "credit": "BrokenSphere, CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Don_Nelson_at_Suns_at_Warriors_3-15-09_1.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Don_Nelson_at_Suns_at_Warriors_3-15-09_1.jpg",
+    "what": "Don Nelson coaching the Warriors on the sideline, 15 Mar 2009 (704 x 984). Courtside alternative."
+  },
+  "photos/commons-popovich-sideline-2010-mike-ccbysa2.jpg": {
+    "credit": "Mike, CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Gregg_Popovich_sideline.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Gregg_Popovich_sideline.jpg",
+    "what": "Gregg Popovich on the Spurs sideline, 17 Mar 2010, navy blazer, walking on maple, looking over his shoulder. Fetched as the 960 x 1179 Commons thumb."
+  },
+  "photos/commons-rick-barry-1976-russreed-pd.jpg": {
+    "credit": "Russ Reed, public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:1976_Rick_Barry.jpeg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/1976_Rick_Barry.jpeg",
+    "what": "Rick Barry, Warriors #24, 1976, black and white, both arms raised; a real NBA referee in stripes stands behind him (the reference for every referee sleeve). Fetched as the 960 x 1999 thumb."
+  },
+  "photos/commons-rick-barry-warriors-1976-pd.jpg": {
+    "credit": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Rick_Barry_%E2%80%93_Warriors_(1).jpeg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Rick_Barry_%E2%80%93_Warriors_%281%29.jpeg",
+    "what": "Rick Barry with the Warriors, 1976, black and white, a layup over a defender: his kit, face and build. Fetched as the 960 x 1576 thumb."
+  },
+  "photos/commons-larry-obrien-trophy-2016-erikdrost-ccby2.jpg": {
+    "credit": "Erik Drost, CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cleveland_Cavaliers_Larry_O%27Brien_Trophy_(29407120124).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Cleveland_Cavaliers_Larry_O%27Brien_Trophy_%2829407120124%29.jpg/1920px-Cleveland_Cavaliers_Larry_O%27Brien_Trophy_%2829407120124%29.jpg",
+    "what": "The real Larry O'Brien Trophy on a table at the right of a Cavaliers photo call, beside three dancers; the trophy is small in this frame (about 230 px wide at 1920) and partly behind pom-poms. Use it for the trophy's shape, gold and the ball-in-the-rim detail; redraw the trophy cleanly from it, never crop the people. Better close-ups to try: File:Cleveland_Cavaliers_Larry_O'Brien_Trophy_(29740727050).jpg and (30000880016).jpg, same author and licence."
+  },
+  "photos/commons-clown-nose-robertcudmore-ccbysa2.jpg": {
+    "credit": "Robert Cudmore, CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Clown_nose.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Clown_nose.jpg/1280px-Clown_nose.jpg",
+    "what": "A red foam clown nose (photo). Reference for the nose's material and highlight."
+  },
+  "photos/commons-quarter-2006-proof-usmint-pd.png": {
+    "credit": "United States Mint, public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:2006_Quarter_Proof.png",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/2006_Quarter_Proof.png",
+    "what": "US quarter, Washington side (2006 proof, 1106 x 1089). Licence confirmed on Commons (Public domain, United States Mint) 2026-11-25. The coin in 'split'."
+  },
+  "photos/commons-basketball-reisio-pd.png": {
+    "credit": "Reisio, public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Basketball.png",
+    "what": "A basketball, pebbled leather and black channels (from nba-floor refs)."
+  },
+  "photos/commons-capital-one-arena-playoffs-2017-daniellobo-cc0.jpg": {
+    "credit": "Daniel Lobo, CC0",
+    "page": "see ../nba-floor/assets/refs/credits.json",
+    "what": "A full NBA arena from the upper deck: the tiers for 'the whole arena watching' (from nba-floor refs)."
+  },
+  "photos/commons-msg-court-2005-ganley894-pd.jpg": {
+    "credit": "public domain",
+    "page": "see ../nba-floor/assets/refs/credits.json",
+    "what": "MSG court 2005: real paint on maple (from nba-floor refs)."
+  },
+  "logos/*": {
+    "credit": "none on screen (team marks, bare)",
+    "page": "https://cdn.nba.com/logos/nba/<team id>/primary/L/logo.svg",
+    "what": "Lakers 1610612747, Mavericks 1610612742, Spurs 1610612759, Suns 1610612756, Heat 1610612748, Magic 1610612753, NBA logoman (from nba-floor)."
+  },
+  "pages/*": {
+    "credit": "source line small grey under the document: 'Basketball-Reference' or 'NBA Official Rules 2025-26'",
+    "what": "box score, play-by-play, rulebook; see plan.md"
+  },
+  "photos/commons-quarter-2006-south-dakota-proof-reverse-usmint-pd.jpg": {
+    "credit": "Edmoral000, CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2006-50-state-quarters-coin-south-dakota-proof-reverse.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/66/2006-50-state-quarters-coin-south-dakota-proof-reverse.jpg",
+    "what": "2006 South Dakota quarter, proof, tails side (300 x 300). Licence on Commons: CC BY-SA 4.0, Edmoral000 (confirmed 2026-11-25). The coin's tails in 'split'."
+  }
+}

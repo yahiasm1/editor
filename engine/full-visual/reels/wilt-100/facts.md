@@ -13,3 +13,14 @@
 | 14-year-old Kerry Ryman said he left with the ball; auctioned 2000 for $551,844 | quoted in article |
 | Famous photo on Commons: File:Wilt_Chamberlain_100_Point_Game_1962_(original).jpg | og:image |
 | Kobe photo on Commons: File:Kobe_Bryant_81.jpg | Kobe article og:image |
+
+## Added for the plan (2026-11-25; documents shown as copy on screen, never said)
+| Claim | Evidence |
+|---|---|
+| Line score PHW 42 37 46 44 = 169, NYK 26 42 38 41 = 147 | Basketball-Reference box score 196203020NYK (`assets/refs/pages/box-196203020-clean.json`) |
+| Wilt box row: 48:00, FG 36 of 63, FT 28 of 32 (.875), TRB 25, AST 2, PF 2, PTS 100 | same box score |
+| Team personal fouls: Warriors 25, Knicks 32 | same box score, Team Totals PF |
+| Venue line "Hershey Sports Arena, Hershey, Pennsylvania", attendance 4,124 | same box score |
+| 1961-62 season: 80 games, 4,029 points (50.4 a game), FT 835 of 1,362 (.613) | Basketball-Reference game log 1962 (`assets/refs/pages/wilt-gamelog-1962-clean.json`) |
+| Ball auction year 2000 | Wikipedia row above ("auctioned 2000 for $551,844") |
+| Kobe 81 photo: Commons "Kobe Bryant 81", endlessbender, CC BY 2.0 | kobe-81 reel refs meta |
